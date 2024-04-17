@@ -14,14 +14,12 @@ export async function getStaticPaths() {
 }
 
 const { productquote } = Astro.params;
-console.log(productquote);
 
-const resp = await fetch(
+const response = await fetch(
   `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[]&fields=[%22item_name%22,%22custom_website_path%22]&limit_page_length=none`
 );
-const data2 = await resp.json();
-const select_products = data2.data;
-console.log(data2);
+const data = await response.json();
+const select_products = data.data;
 ---
 
 <Layout title="Quote">
@@ -431,12 +429,10 @@ console.log(data2);
                   name="product"
                   id="grid-product"
                 >
-                  <option>Karan Product</option>
-                  <option>Select Product</option>
                   {
-                    select_products.map((d) => (
-                      <option selected={d.custom_website_path === productquote}>
-                        {d.item_name}
+                    select_products.map((data) => (
+                      <option selected={data.custom_website_path === productquote}>
+                        {data.item_name}
                       </option>
                     ))
                   }

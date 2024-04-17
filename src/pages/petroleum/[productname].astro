@@ -3,7 +3,7 @@ import ProductCta from "../../components/Product_cta.astro";
 import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
   const response = await fetch(
-    "http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_product_category%22,%22=%22,%22Petroleum%20Products%22],[%22published%22,%22=%22,%221%22]]&fields=[%22*%22]"
+    "http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_product_category%22,%22=%22,%22Petroleum%20Products%22],[%22published%22,%22=%22,%221%22]]&fields=[%22*%22]&limit_page_length=none"
   );
   const data = await response.json();
 
@@ -34,14 +34,18 @@ const {
   product_id,
 } = Astro.props;
 
-const resp = await fetch(
+const response = await fetch(
   `http://192.168.2.126:8001/api/resource/Website%20Item/${product_id}`
 );
-const data2 = await resp.json();
-const product_application = data2.data.custom_application;
+const data = await response.json();
+const product_application = data.data.custom_application;
+const product_specs_data = data.data.custom_website_product_specification;
+let specification_names = Array.from(
+  new Set(product_specs_data.map((data) => data.specification_type))
+);
 ---
 
-<Layout title={productname}>
+<Layout title={proper_product_name}>
   <section class="team">
     <section id="heading">
       <div
@@ -135,90 +139,86 @@ const product_application = data2.data.custom_application;
             class="relative overflow-x-auto shadow-md rounded-lg xl:w-[800px] lg:w-[550px] border-[1px] border-[#AAACB8]"
           >
             <table class="text-left w-full">
-              <thead class="bg-[#48389C1A] text-[#48389C]"
-                ><tr
-                  ><th
-                    scope="col"
-                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
-                  >
-                    Specification
-                  </th><th
-                    scope="col"
-                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
-                  >
-                    Unit
-                  </th><th
-                    scope="col"
-                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
-                  >
-                    Value
-                  </th><th
-                    scope="col"
-                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
-                  >
-                    Test Method
-                  </th></tr
-                ></thead
-              >
+              {
+                specification_names.includes("Specification") && (
+                  <thead class="bg-[#48389C1A] text-[#48389C]">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                      >
+                        Specification
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                      >
+                        Unit
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                      >
+                        Value
+                      </th>
+                      <th
+                        scope="col"
+                        class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                      >
+                        Test Method
+                      </th>
+                    </tr>
+                  </thead>
+                )
+              }
               <tbody id="table-body">
-                
-                <tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Absolute Viscosity, at 60 ◦C</th
-                  ><td class="px-4 py-[15px]">Poise</td><td
-                    class="px-4 py-[15px]">Min 800</td
-                  ><td class="px-4 py-[15px]">ASTM D4402</td>
-                </tr>
-
-                <tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Kinematic Viscosity, at 135 ◦C</th
-                  ><td class="px-4 py-[15px]">CST</td><td class="px-4 py-[15px]"
-                    >Min 250</td
-                  ><td class="px-4 py-[15px]">ASTM D2170</td></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Flash Point</th
-                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
-                    >Min 220</td
-                  ><td class="px-4 py-[15px]">ASTM D93</td></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Solubility in Trichloroethylene</th
-                  ><td class="px-4 py-[15px]">%WT</td><td class="px-4 py-[15px]"
-                    >Min 99</td
-                  ><td class="px-4 py-[15px]">ASTM D2042</td></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Penetration Value, at 25 ◦C</th
-                  ><td class="px-4 py-[15px]">0.1mm</td><td
-                    class="px-4 py-[15px]">80-100</td
-                  ><td class="px-4 py-[15px]">ASTM D5</td></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Softening Point</th
-                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
-                    >Min 40</td
-                  ><td class="px-4 py-[15px]">ASTM D36</td></tr
-                ><tr class="border-b text-left"
-                  ><th
-                    colspan="4"
-                    class="border-b text-left text-[#48389C] px-4 py-[15px] bg-[#48389C08]"
-                    >Thin-Film Oven Test (TFOT)</th
-                  ></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Viscosity Ratio, at 60 ◦C</th
-                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
-                    >Max 4</td
-                  ><td class="px-4 py-[15px]">ASTM D4402</td></tr
-                ><tr class="border-b text-left"
-                  ><th class="px-4 py-4 whitespace-nowraptext-black"
-                    >Ductility at 25 ◦C , after thin film oven test</th
-                  ><td class="px-4 py-[15px]">Cm</td><td class="px-4 py-[15px]"
-                    >Min 75</td
-                  ><td class="px-4 py-[15px]">ASTM D113</td></tr
-                >
+                {
+                  product_specs_data
+                    .filter(
+                      (data) => data.specification_type === "Specification"
+                    )
+                    .map((data) => (
+                      <tr class="border-b text-left">
+                        <th class="px-4 py-4 whitespace-nowrap text-black">
+                          {data.specification}
+                        </th>
+                        <td class="px-4 py-[15px]">{data.unit}</td>
+                        <td class="px-4 py-[15px]">{data.value}</td>
+                        <td class="px-4 py-[15px]">{data.test_method}</td>
+                      </tr>
+                    ))
+                }
+                {
+                  specification_names.includes(
+                    "Thin-Film Oven Test (TFOT)"
+                  ) && (
+                    <tr class="border-b text-left">
+                      <th
+                        colspan="4"
+                        class="border-b text-left text-[#48389C] px-4 py-[15px] bg-[#48389C08]"
+                      >
+                        Thin-Film Oven Test (TFOT)
+                      </th>
+                    </tr>
+                  )
+                }
+                {
+                  product_specs_data
+                    .filter(
+                      (data) =>
+                        data.specification_type === "Thin-Film Oven Test (TFOT)"
+                    )
+                    .map((data) => (
+                      <tr class="border-b text-left">
+                        <th class="px-4 py-4 whitespace-nowrap text-black">
+                          {data.specification}
+                        </th>
+                        <td class="px-4 py-[15px]">{data.unit}</td>
+                        <td class="px-4 py-[15px]">{data.value}</td>
+                        <td class="px-4 py-[15px]">{data.test_method}</td>
+                      </tr>
+                    ))
+                }
               </tbody>
             </table>
           </div>
@@ -322,258 +322,3 @@ const product_application = data2.data.custom_application;
     </div>
   </section>
 </Layout>
-
-<!-- <script>
-  const apiKey = import.meta.env.PUBLIC_ApiKey as string;
-  const secretKey = import.meta.env.PUBLIC_SecretKey as string;
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const website_path = urlParams.get("product");
-  // const website_path = "vg-10-bulk";
-
-  if (website_path) {
-    const get_id_API = await fetch(
-      `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `token ${apiKey}:${secretKey}`,
-        },
-      }
-    );
-
-    const get_id_data = await get_id_API.json();
-    const get_id = get_id_data.data;
-
-    if (get_id && get_id[0] && get_id[0].name) {
-      const id = get_id[0].name ? get_id[0].name : "";
-      // console.log(get_id);
-
-      const respose = await fetch(
-        `http://192.168.2.126:8001/api/resource/Website Item/${id}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `token ${apiKey}:${secretKey}`,
-          },
-        }
-      );
-
-      const responseData = await respose.json();
-      const tableData = responseData.data;
-
-      if (tableData && tableData.published === 1) {
-        // console.log(tableData);
-        // console.log(tableData.custom_website_path);
-
-        const title = tableData.custom_meta_title
-          ? tableData.custom_meta_title
-          : "Delivering Quality Raw Materials at Competitive Prices.";
-
-        const description = tableData.custom_meta_description
-          ? tableData.custom_meta_description
-          : "Explore Mignesh Global's comprehensive grades of high-quality raw materials, including Bitumin products, lubricants materials, petroleum products at affordable rates.";
-
-        UpdateMeta(title, description);
-        // SET META TITLE AND DESC FOR PERTICULAR PRODUCT
-        function UpdateMeta(title, description) {
-          var meta_title = document.querySelector('meta[name="title"]');
-          var meta_description = document.querySelector(
-            'meta[name="description"]'
-          );
-          meta_title.setAttribute("content", title);
-          meta_description.setAttribute("content", description);
-        }
-
-        const subRespose = await fetch(
-          // `http://192.168.2.126:8001/api/resource/Website%20Product%20Specification`,
-          `http://192.168.2.126:8001/api/resource/Website%20Product%20Specification`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `token ${apiKey}:${secretKey}`,
-            },
-          }
-        );
-
-        const subResponseData = await subRespose.json();
-        const subData = subResponseData.data;
-
-        // console.log(subData);
-
-        // console.log(responseData)
-        // console.log(tableData);
-        console.log("object");
-
-        //for application
-        const ul = document.getElementById("application");
-        // console.log(ul);
-        tableData.custom_application.forEach((element) => {
-          const li = document.createElement("li");
-          li.classList.add("flex", "mt-3", "sm:mt-6", "gap-2.5");
-          ul.appendChild(li);
-
-          const bullet_div = document.createElement("div");
-          bullet_div.classList.add("w-5");
-          li.appendChild(bullet_div);
-
-          var svgString =
-            '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-            '<path d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#E98135"/>' +
-            '<path d="M4.22006 18.1614C3.30008 17.5087 2.49525 16.7043 1.842 15.7847L9.02935 8.59799L6.64148 6.21032C6.54431 6.11072 6.47844 5.98487 6.45196 5.84827C6.42548 5.71168 6.43956 5.57032 6.49247 5.44163C6.54538 5.31295 6.6348 5.20256 6.7497 5.12409C6.86461 5.04561 6.99997 5.00247 7.1391 5H14.2872C14.4757 5.00175 14.656 5.07742 14.7893 5.2107C14.9226 5.34399 14.9982 5.52425 15 5.71274V12.8603C14.9975 12.9994 14.9544 13.1347 14.8759 13.2496C14.7974 13.3645 14.6871 13.4539 14.5584 13.5068C14.4297 13.5598 14.2883 13.5738 14.1517 13.5474C14.0151 13.5209 13.8892 13.455 13.7896 13.3578L11.4068 10.9752L4.22006 18.1614Z" fill="white"/>' +
-            "</svg>";
-
-          var bullet = document.createElement("div");
-          bullet.innerHTML = svgString;
-          bullet_div.appendChild(bullet);
-
-          const text_div = document.createElement("div");
-          text_div.classList.add("max-w-[85%]");
-          text_div.innerText = element.application;
-          li.appendChild(text_div);
-        });
-
-        // console.log(specificatinData);
-        // console.log(tableData.web_item_name);
-        // console.log(tableData.custom_price);
-        // console.log(tableData.custom_product_image);
-        // console.log(tableData.custom__product_application_image);
-        // console.log(tableData.published)
-
-        //  Product Application Image
-        let apllicationImage = ((
-          document.getElementById("application_image") as HTMLImageElement
-        ).src =
-          "http://192.168.2.126:8001/" +
-          tableData.custom__product_application_image);
-
-        let productName = document.getElementsByClassName("product-name");
-        let productCat = document.getElementById("productCat");
-
-        // console.log(tableData.custom_product_category)
-        if (
-          tableData.custom_product_category == "Bitumen and Bitumen Products"
-        ) {
-          productCat.innerText = "Bitumen and Bitumen Products";
-          for (let i = 0; i < productName.length; i++) {
-            productName[i].textContent = tableData.web_item_name;
-          }
-        }
-        if (tableData.custom_product_category == "Lubricant Raw Material") {
-          productCat.innerText = "Lubricant Raw Material";
-          for (let i = 0; i < productName.length; i++) {
-            productName[i].textContent = tableData.web_item_name;
-          }
-        }
-
-        if (tableData.custom_product_category == "Petroleum Products") {
-          productCat.innerText = "Petroleum Products";
-          for (let i = 0; i < productName.length; i++) {
-            productName[i].textContent = tableData.web_item_name;
-          }
-        }
-
-        let product_name = document.querySelector(".product_name");
-        product_name.textContent = tableData.web_item_name;
-
-        let basePrice = document.getElementById("base-price");
-        basePrice.innerText = tableData.custom_price.toLocaleString("en-IN", {
-          style: "currency",
-          currency: "INR",
-        });
-
-        // Give link to the Get a Quote Button
-        const quoteButoon = document.getElementById(
-          "get-quote"
-        ) as HTMLAnchorElement;
-        quoteButoon.href = `/quote?product=${tableData.custom_website_path}`;
-
-        // Product Image
-        let productImage = ((
-          document.getElementById("product-image") as HTMLImageElement
-        ).src = "http://192.168.2.126:8001/" + tableData.custom_product_image);
-
-        const tBody = document.getElementById("table-body");
-        const jsonData = tableData.custom_website_product_specification;
-        // console.log(jsonData)
-        const que = subData;
-        const table_data = {};
-
-        for (const item of que) {
-          const name = item.name;
-          // console.log(name)
-          const temp = [];
-          for (const dataItem of jsonData) {
-            if (dataItem.specification_type === name) {
-              // console.log(name);
-              temp.push(dataItem);
-            }
-          }
-          table_data[name] = temp;
-        }
-        // console.log(table_data);
-
-        for (const data in table_data) {
-          // console.log(data);
-
-          if (table_data[data].length != 0) {
-            // console.log(data);
-            const row = table_data[data];
-            const tBody = document.getElementById("table-body");
-            // console.log(row);
-
-            if (data != "Specification") {
-              const tRowh = document.createElement("tr");
-              tRowh.classList.add("border-b", "text-left");
-              tBody.appendChild(tRowh);
-
-              const tHead = document.createElement("th");
-              tHead.colSpan = 4;
-              tHead.innerText = data;
-              tHead.classList.add(
-                "border-b",
-                "text-left",
-                "text-[#48389C]",
-                "px-4",
-                "py-[15px]",
-                "bg-[#48389C08]"
-              );
-              tRowh.appendChild(tHead);
-            }
-            // console.log(row)
-
-            row.forEach((element) => {
-              const tRow = document.createElement("tr");
-              tRow.classList.add("border-b", "text-left");
-              tBody.appendChild(tRow);
-
-              const Specification = document.createElement("th");
-              Specification.innerText = element.specification;
-              Specification.classList.add(
-                "px-4",
-                "py-4",
-                "whitespace-nowraptext-black"
-              );
-              tRow.appendChild(Specification);
-
-              const Unit = document.createElement("td");
-              Unit.innerText = element.unit;
-              Unit.classList.add("px-4", "py-[15px]");
-              tRow.appendChild(Unit);
-
-              const Value = document.createElement("td");
-              Value.innerText = element.value;
-              Value.classList.add("px-4", "py-[15px]");
-              tRow.appendChild(Value);
-
-              const TestMethod = document.createElement("td");
-              TestMethod.innerText = element.test_method;
-              TestMethod.classList.add("px-4", "py-[15px]");
-              tRow.appendChild(TestMethod);
-            });
-          }
-        }
-      }
-    }
-  }
-</script> -->
