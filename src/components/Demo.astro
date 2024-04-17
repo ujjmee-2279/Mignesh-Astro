@@ -1,0 +1,70 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  ptext?: string;
+  h2text?: string;
+  innerptext1?: string;
+  innerptext2?: string;
+  image?: string;
+}
+
+const { ptext, h2text, innerptext1, innerptext2, image } = Astro.props;
+---
+
+<section class="lg:mb-[78px] sm:mb-[60px] mb-[48px] mt-[92px]">
+  <div
+    class="container-1 flex flex-col-reverse lg:flex-row gap-10 lg:gap-[100px] xl:gap-[254px]"
+  >
+    <div class="space-y-5">
+      <div class="head-txt">
+        <h2 class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7">
+          {ptext}
+        </h2>
+        <h3
+          class="text-[#48389C] text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+        >
+          {h2text}
+        </h3>
+      </div>
+
+      <div class="w-full lg:w-[524px] mt-[31px] ptag text-[#2C2C2C]">
+        <p class="mb-8">
+          {innerptext1}
+        </p>
+        <p>
+          {innerptext2}
+        </p>
+      </div>
+    </div>
+    <div class="self-center">
+
+      <img class="2xl:w-auto max-w-[300px] w-[65vw]  sm:w-full m-auto lg:max-w-none" src={image} alt="image" />
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Common Heading Css */
+  .head-txt {
+  }
+  .head-txt h2 {
+    color: #48389c;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .head-txt h6 {
+    color: #ea8135;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  @media (min-width: 768px) {
+    .head-txt h2 {
+      font-size: 32px;
+
+    }
+    .head-txt h6 {
+      font-size: 20px;
+    }
+  }
+</style>

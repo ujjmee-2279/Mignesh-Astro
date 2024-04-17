@@ -1,0 +1,295 @@
+---
+import slogo from "../assets/logo-small.webp";
+import facebook from "../assets/facebook.svg";
+import twitter from "../assets/twitter.svg";
+import linkedin from "../assets/linkdin.svg";
+import vector from "../assets/Vector.webp";
+---
+
+<style>
+  #footer {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+  }
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  input:focus {
+    border: 0;
+  }
+  input:focus {
+    outline: 0;
+  }
+  @media (min-width: 280px) and (max-width: 639px) {
+    .container {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+  @media (min-width: 640px) {
+    .container {
+      max-width: 512px;
+    }
+  }
+  @media (min-width: 768px) {
+    .container {
+      max-width: 672px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 896px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1152px;
+    }
+  }
+  @media (min-width: 1538px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+</style>
+
+<footer class="bg-[#2E2B70] max-w-full">
+  <div
+    class="container-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:py-[80px] py-[32px] h-auto justify-between"
+  >
+    <div class="max-w-[367px]">
+      <a href="../">
+
+        <img
+          src="../../public/images/footer/logo-small.webp"
+          alt="mignesh-logo"
+        />
+
+      </a>
+      <br />
+      <a
+        href="https://www.google.com/maps/place/Mignesh+Petrochem+LLP/@23.1357775,72.5476797,17z/data=!3m1!4b1!4m6!3m5!1s0x395e82bd9714aced:0x705adccffd2583ae!8m2!3d23.1357775!4d72.5502546!16s%2Fg%2F11jl07_qsl?entry=ttu"
+        class="leading-[20px] text-[#AAACB8] hover:text-[#ffffff] text-justify"
+      >
+        B-308, Shaligram Lakeview,<br /> Opp.Balaji Wind Park,<br />
+        Nr. Vaishnodevi Circle,<br /> Sardar Patel Ring Road,<br />
+        Gandhinagar, Gujarat - 382421
+      </a>
+      <div class="flex flex-row gap-[17px] md:mt-4 mt-2">
+        <a
+          href="https://www.facebook.com/profile.php?id=100070631846398&mibextid=ZbWKwL"
+          aria-label="facebook icon"
+        >
+          <svg
+            class="hoverEffect hover:rounded-3xl max-w-[90%] sm:max-w-none"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.0119 0C11.9649 0.0268706 8.07607 1.57176 5.11805 4.32776C2.16003 7.08376 0.349268 10.8492 0.0454978 14.8759C-0.258272 18.9027 0.967181 22.8962 3.4784 26.0629C5.98962 29.2297 9.60283 31.338 13.6002 31.9691V20.3456H9.61384V16.1206H13.6002V13.306C13.6002 8.64798 15.8755 6.60043 19.7565 6.60043C20.8615 6.58675 21.966 6.65498 23.0609 6.80456V10.5161H20.4136C18.7707 10.5161 18.1942 12.075 18.1942 13.8318V16.1454H23.0175L22.3975 20.3704H18.1942V32C22.2151 31.4182 25.8675 29.3427 28.4205 26.189C30.9735 23.0352 32.2386 19.0358 31.9628 14.9911C31.687 10.9464 29.8905 7.15487 26.9329 4.37524C23.9753 1.59561 20.0748 0.032953 16.0119 0Z"
+              fill="#A3A5B4"></path>
+          </svg>
+
+          <!-- <img
+            src={facebook.src}
+            alt="facebook"
+            class="hoverEffect hover:rounded-3xl max-w-[90%] sm:max-w-none"
+          /> -->
+        </a>
+        <a href="" class="hidden">
+          <svg
+            class="hoverEffect hover:rounded-3xl max-w-[90%] sm:max-w-none"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+          >
+            <path
+              d="M20.0993 23.8835H22.4859L11.5003 8.16971H9.11372L20.0993 23.8835Z"
+              fill="#A3A5B4"></path>
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32ZM24.0389 7L17.4821 14.6218L24.613 25H19.3683L14.5661 18.0113L8.55384 25H7L13.8763 17.0074L7 7H12.2447L16.7919 13.6179L22.4852 7H24.0389Z"
+              fill="#A3A5B4"></path>
+          </svg>
+
+          <!-- <img
+            src={twitter.src}
+            alt="facebook"
+            class="hover:bg-[#FEC49A] hover:rounded-3xl max-w-[90%] sm:max-w-none"
+          /> -->
+        </a>
+        <a
+          href="https://www.linkedin.com/company/mignesh-global/"
+          aria-label="linkedIn icon"
+        >
+          <svg
+            class="hoverEffect hover:rounded-3xl max-w-[90%] sm:max-w-none"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16 0C12.8355 0 9.74207 0.938383 7.11088 2.69649C4.4797 4.45459 2.42894 6.95345 1.21793 9.87706C0.00693255 12.8007 -0.309921 16.0177 0.307443 19.1214C0.924806 22.2251 2.44866 25.0761 4.6863 27.3137C6.92394 29.5513 9.77486 31.0752 12.8786 31.6926C15.9823 32.3099 19.1993 31.9931 22.1229 30.7821C25.0466 29.5711 27.5454 27.5203 29.3035 24.8891C31.0616 22.2579 32 19.1645 32 16C32 11.7565 30.3143 7.68687 27.3137 4.68629C24.3131 1.68571 20.2435 0 16 0ZM11.1304 22.9565H8.34783V12.5217H11.1304V22.9565ZM9.73914 10.4348C9.46396 10.4348 9.19497 10.3532 8.96617 10.2003C8.73737 10.0474 8.55904 9.83013 8.45374 9.57591C8.34843 9.32168 8.32088 9.04193 8.37457 8.77205C8.42825 8.50216 8.56076 8.25425 8.75534 8.05968C8.94991 7.8651 9.19782 7.73259 9.46771 7.67891C9.73759 7.62522 10.0173 7.65277 10.2716 7.75808C10.5258 7.86338 10.7431 8.04171 10.896 8.27051C11.0488 8.49931 11.1304 8.7683 11.1304 9.04348C11.1304 9.41247 10.9839 9.76636 10.7229 10.0273C10.462 10.2882 10.1081 10.4348 9.73914 10.4348ZM24.3478 22.9565H21.5652V17.7391C21.5652 17.0934 21.3087 16.4741 20.8521 16.0175C20.3955 15.5609 19.7762 15.3043 19.1304 15.3043C18.4847 15.3043 17.8654 15.5609 17.4088 16.0175C16.9522 16.4741 16.6957 17.0934 16.6957 17.7391V22.9565H13.913V12.5217H16.6957V13.7878C17.3336 13.1713 18.139 12.7564 19.0113 12.595C19.8837 12.4335 20.7842 12.5326 21.6006 12.8799C22.4169 13.2273 23.1128 13.8074 23.6014 14.5478C24.09 15.2883 24.3496 16.1563 24.3478 17.0435V22.9565Z"
+              fill="#A3A5B4"></path>
+          </svg>
+
+          <!-- <img
+            src={linkedin.src}
+            alt="facebook"
+            class="hover:bg-[#FEC49A] hover:rounded-3xl max-w-[90%] sm:max-w-none"
+          /> -->
+        </a>
+      </div>
+    </div>
+    <div class="lg:ml-12">
+      <h2
+        class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[24px] sm:pt-[20px]"
+      >
+        Products
+      </h2>
+      <br class="hidden sm:block" />
+      <ul class="mt-3 sm:mt-0">
+        <li class="my-0">
+          <a href="/bitumen" class="text-[#AAACB8] hover:text-[#FEC49A]">
+            Bitumen & Bitumen Products
+          </a>
+        </li>
+        <li class="my-1">
+          <a
+            href="/lubricant"
+            class="xl:leading-[32px] text-[#AAACB8] hover:text-[#FEC49A]"
+          >
+            Lubricant Raw Material
+          </a>
+        </li>
+        <!-- <li class="my-1">
+          <a
+            href="/building-con"
+            class="xl:leading-[12px] text-[#AAACB8] hover:text-[#FEC49A]"
+          >
+            Building & Construction Raw Material
+          </a>
+        </li> -->
+        <li class="my-1">
+          <a
+            href="/petroleum"
+            class="xl:leading-[32px] text-[#AAACB8] hover:text-[#FEC49A]"
+          >
+            Petroleum Products
+          </a>
+        </li>
+        <!-- <li class="my-1">
+          <a
+            href="/polymer"
+            class="xl:leading-[12px] text-[#AAACB8] hover:text-[#FEC49A]"
+          >
+            Polymer Products
+          </a>
+        </li> -->
+      </ul>
+    </div>
+    <div class="lg:ml-16">
+      <h2
+        class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[20px]"
+      >
+        Quick Links
+      </h2>
+      <a
+        href="/about"
+        class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block mt-[12px]"
+      >
+        About Us
+      </a>
+      <!-- <a
+        href="./#client_section"
+        class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block"
+      >
+        Client
+      </a> -->
+      <a
+        href="/contact"
+        class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block"
+      >
+        Contact Us
+      </a>
+    </div>
+    <div class="lg:ml-10">
+      <h2
+        class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[20px]"
+      >
+        Get in Touch
+      </h2>
+      <p
+        class="leading-[22px] text-[#AAACB8] mt-[14px] max-w-[280px] sm:max-w-none"
+      >
+        Question or Feedback? We’d love to here from you
+      </p>
+      <p
+        class="leading-[22px] text-[#AAACB8] mt-[14px] max-w-[280px] sm:max-w-none"
+      >
+        <span>E-Mail : </span><span class="hover:text-[#FEC49A]"
+          >info@migneshglobal.com</span
+        >
+      </p>
+      <p
+        class="leading-[22px] text-[#AAACB8] mt-[14px] max-w-[280px] sm:max-w-none"
+      >
+        Contact : <span class="hover:text-[#FEC49A]">+91 9913332427</span>
+      </p>
+      <p class="leading-[22px] text-[#AAACB8] max-w-[280px] sm:max-w-none">
+        <span class="opacity-0">Contact : </span><span
+          class="hover:text-[#FEC49A]">+91 70965 58837</span
+        >
+      </p>
+      <!-- <div
+        class="bg-[#1B1944] flex flex-row flex-wrap items-center rounded-[5px] max-w-[243px] md:mt-[12px] mt-[6px]"
+      >
+        <input
+          type="text"
+          placeholder="email"
+          class="bg-[transparent] text-[white] w-[90%] border-0"
+        />
+        <img src={vector.src} alt="vector" class="h-3 w-2 ml-2" />
+
+      </div> -->
+    </div>
+  </div>
+</footer>
+<footer class="bg-[#1B1944] text-center">
+  <div
+    class="container-1 py-[18px] text-[#AAACB8] leading-[24px] flex flex-col md:flex-row justify-between"
+  >
+    <p class="">© 2023 MIGNESH Global Limited. All Rights Reserved.</p>
+    <p>
+      Design & Develop by <a
+        href="https://sanskartechnolab.com/"
+        class="text-[#FEC49A] hover:text-white">Sanskar Technolab</a
+      >
+    </p>
+  </div>
+</footer>
+<style>
+  .hoverEffect:hover path {
+    fill: #fec49a;
+  }
+  .hoverEffect path {
+    transition: all 0.3s;
+  }
+</style>

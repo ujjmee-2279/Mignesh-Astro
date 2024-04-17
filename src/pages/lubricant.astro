@@ -1,0 +1,536 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Infra_Card from "../components/Infra_Card.astro";
+import Product_cta from "../components/Product_cta.astro";
+import Banner from "../components/Banner.astro";
+import ProductDetail from "../components/ProductDetail.astro";
+---
+
+<Layout
+  title="Lubricant Raw Material"
+  meta_title="Premium Lubricant Raw Material Products from Mignesh Global"
+  meta_desc="Mignesh Global supplies top quality industrial lubricants for infrastructure, manufacturing, and heavy machinery. We supply premium lubricant products for guaranteed results."
+>
+  <main>
+    <section id="category">
+      <Banner
+        showButton={true}
+        h2text="Mignesh Global - Your Premier Source for High-Quality Lubricant Raw Materials!"
+        ptext="Mignesh Global extends its expertise to provide high-quality lubricant raw materials. Leveraging our established network, we ensure reliability and excellence in every supply."
+        laptop="../../public/images/about/about_laptop.webp"
+        tablet="../../public/images/about/about_tablet.webp"
+        mobile="../../public/images/about/about_mobile.webp"
+      />
+      <!-- our products -->
+      <section
+        class="lg:mt-[80px] md:mt-[60px] body-font text-[#2C2C2C] lg:mb-[78px] sm:mb-[60px] mb-[48px] mt-[92px]"
+      >
+        <div class="container-1">
+          <div
+            class="flex flex-col-reverse lg:flex-row justify-between gap-6 lg:gap-12 xl:gap-20"
+          >
+            <div
+              class="text-[16px] order-1 lg:max-w-[400px] xl:max-w-[515px] space-y-3 lg:space-y-5"
+            >
+              <div class="head-txt">
+                <h3
+                  class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+                >
+                  Our Products
+                </h3><h3
+                  class="text-[#48389C] text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+                >
+                  Lubricant
+                </h3>
+              </div>
+              <div class="w-full xl:w-[524px] mt-[31px] ptag text-[#2C2C2C]">
+                <p class="mb-3 sm:mb-4 xl:mb-8">
+                  Mignesh Global stands is the leading and trusted supplier of
+                  premium Lubricant products, catering to the specific needs of
+                  the infrastructure and manufacturing industries.
+                </p><p>
+                  Whether you are looking for road construction and maintenance
+                  needs or for waterproofing structures and protecting
+                  bridges,tunnels, and pavements - our high-grade Lubricant
+                  guarantees desired results for your personalized business
+                  requirements.
+                </p>
+              </div>
+            </div>
+            <div
+              class="lg:flex lg:order-1 lg:items-center lg:w-[50%]"
+              style="
+    margin-left: 0px;
+"
+            >
+              <img
+                class="object-contain items-center w-full"
+                alt="hero"
+                src="../../public/images/product/lubricant.webp"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="bg-[#F9F9FB]">
+        <div
+          class="container-1 px-5 sm:pt-24 pt-14 sm:pb-5 pb-6 mx-full bg-[#F9F9FB]"
+        >
+          <div class="sm:text-start text-start w-full lg:mb-11 mb-5 head-txt">
+            <div class="sm:text-start text-start w-full lg:mb-10 mb-5 head-txt">
+              <h3
+                class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+              >
+                Why Choose Us for your
+              </h3>
+              <h3
+                class="text-[#48389C] text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+              >
+                Lubricant Raw Material Product Requirements?
+              </h3>
+            </div>
+          </div>
+
+          <!-- card -->
+          <div class="flex flex-wrap">
+            <!-- first card -->
+            <Infra_Card
+              data="Mignesh Global has partnered with various suppliers to ensure the availability of lubricant materials of any grade and quality at affordable rates."
+              icon="../../public/images/csr/Union.svg"
+            />
+            <!-- second card -->
+            <Infra_Card
+              data="We have a feature-rich ERPNext software through which you can seamlessly order, track, and manage your products and billing cycle as well."
+              icon="../../public/images/csr/traffic.svg"
+            />
+            <!-- third card -->
+            <Infra_Card
+              data="Our fuel oil products meet stringent quality standards, delivering optimal performance and efficiency for your business processes."
+              icon="../../public/images/csr/rate.svg"
+            />
+            <!-- four card -->
+            <Infra_Card
+              data="Our dedicated logistics division, Mignesh Logistics, ensures timely and seamless deliveries to your location, saving you time and effort in managing your fuel supply."
+              icon="../../public/images/csr/roof-material.svg"
+            />
+            <!-- five card -->
+            <Infra_Card
+              data="Beyond lubricant raw material supply, we offer comprehensive solutions, including testing, management, and on-site support to optimize your lubricant raw materials usage and efficiency."
+              icon="../../public/images/csr/paint.svg"
+            />
+            <!-- six card -->
+            <Infra_Card
+              data="We are committed to sustainable practices. Our lubricant materials adhere to eco-friendly standards, promoting environmental responsibility and aligning with your business's green initiatives."
+              icon="../../public/images/csr/sound-proofing.svg"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="flex flex-wrap w-full">
+        <div class="container-1 px-5 sm:py-20 py-14 mx-full" id="our_product">
+          <div class="flex flex-wrap w-full">
+            <div class="w-full head-txt text-left">
+              <h3
+                class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+              >
+                Our Wide Range of
+              </h3>
+              <h3
+                class="text-[#48389C] text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+              >
+                LUBRICANT RAW MATERIAL PRODUCTS
+              </h3>
+            </div>
+          </div>
+
+          <div id="SubCategory"></div>
+        </div>
+      </div>
+
+      <Product_cta
+        button_text="Contact us today!"
+        head="Partner with Mignesh Global for quality, affordability, and seamless logistics."
+      />
+    </section>
+
+    <section id="product">
+      <ProductDetail />
+    </section>
+  </main>
+
+  <!-- DYNAMIC SCRIPT FOR PRODUCT DETAIL -->
+  <script>
+    const apiKey = import.meta.env.PUBLIC_ApiKey as string;
+    const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+
+    const MainElememnt = document.querySelector("#main");
+    const CategoryElememnt = document.querySelector("#category");
+    const ProductElememnt = document.querySelector("#product");
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const website_path = urlParams.get("product");
+    console.log(website_path);
+
+    // const website_path = "vg-10-bulk";
+
+    if (website_path) {
+      const get_id_API = await fetch(
+        `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `token ${apiKey}:${secretKey}`,
+          },
+        }
+      );
+
+      const get_id_data = await get_id_API.json();
+      const get_id = get_id_data.data;
+      console.log(get_id);
+
+      if (get_id && get_id[0] && get_id[0].name) {
+        const id = get_id[0].name;
+
+        console.log("id", id);
+
+        const respose = await fetch(
+          `http://192.168.2.126:8001/api/resource/Website Item/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `token ${apiKey}:${secretKey}`,
+            },
+          }
+        );
+
+        const responseData = await respose.json();
+        const tableData = responseData.data;
+
+        console.log(tableData);
+
+        if (tableData && tableData.published === 1) {
+          console.log("Get The Item");
+          CategoryElememnt.remove();
+        } else {
+          console.log("No Product");
+          ProductElememnt.remove();
+        }
+      } else {
+        ProductElememnt.remove();
+      }
+    } else {
+      ProductElememnt.remove();
+    }
+  </script>
+
+  <script>
+    const apiKey = import.meta.env.PUBLIC_ApiKey as string;
+    const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+
+    const formatter = new Intl.NumberFormat("en-US", {
+      style: "decimal",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+    const respose = await fetch(
+      `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1],[%22custom_product_category%22,%20%22=%22,%20%22Lubricant%20Raw%20Material%22]]&fields=[%22web_item_name%22,%20%22custom_price%22,%22name%22,%22custom_sub_category%22,%22custom_product_category%22,%22custom_website_path%22]&limit_page_length=none`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `token ${apiKey}:${secretKey}`,
+        },
+      }
+    );
+
+    const responseData = await respose.json();
+    const apiData = responseData.data;
+    // console.log(responseData);
+    // console.log(apiData);
+    // console.log(custom_sub_category)
+
+    const allSubCategoriesApi = await fetch(
+      `http://192.168.2.126:8001/api/resource/Website%20Item%20Sub%20Category?filters=[[%22product_category%22,%22=%22,%22Lubricant%20Raw%20Material%22]]&fields=[%22name%22,%22product_category%22,%22index%22]`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `token ${apiKey}:${secretKey}`,
+        },
+      }
+    );
+
+    const allSubCategoriesJsonData = await allSubCategoriesApi.json();
+    const allSubCategoriesData = allSubCategoriesJsonData.data;
+    // console.log(allSubCategoriesApi);
+    // console.log(allSubCategoriesData);
+
+    const sortedsubCategories = [];
+
+    for (var n = 1; n <= allSubCategoriesData.length; n++) {
+      // console.log(allSubCategoriesData[n-1].index);
+      // console.log("n  ", n);
+      allSubCategoriesData.forEach((element) => {
+        // console.log(element)
+        if (element.index == n) {
+          // console.log(element);
+          sortedsubCategories.push(element);
+        }
+      });
+    }
+    // console.log(sortedsubCategories)
+
+    //added temp data for product showing purpose
+    sortedsubCategories.push({
+      name: "testing",
+      product_category: "testing",
+    });
+
+    //Product Sub categor
+    const jsonData = apiData;
+    // console.log(jsonData);
+    const que = sortedsubCategories;
+    // console.log(que);
+    const subCategoryData = {};
+
+    for (const data of que) {
+      // console.log(data);
+    }
+
+    for (const item of que) {
+      const name = item.name;
+      const temp = [];
+      const blank = [];
+      for (const dataItem of jsonData) {
+        if (dataItem.custom_sub_category === name) {
+          // console.log(name);
+          temp.push(dataItem);
+        }
+        if (dataItem.custom_sub_category === "") {
+          // console.log(dataItem)
+          blank.push(dataItem);
+        }
+      }
+
+      subCategoryData[name] = temp;
+      subCategoryData[""] = blank;
+    }
+    // console.log(subCategoryData);
+    const sortedsubCategoryData = subCategoryData;
+
+    // console.log(sortedsubCategoryData);
+
+    for (const key in sortedsubCategoryData) {
+      if (sortedsubCategoryData[key] == "") {
+        // console.log(key)
+        delete sortedsubCategoryData[key];
+      }
+    }
+    // console.log(sortedsubCategoryData);
+
+    for (const item in sortedsubCategoryData) {
+      // console.log(sortedsubCategoryData[item])
+      sortedsubCategoryData[item].sort((a, b) =>
+        a.web_item_name.localeCompare(b.web_item_name)
+      );
+    }
+    // console.log(sortedsubCategoryData)
+
+    const categoryDiv = document.getElementById("SubCategory");
+
+    var count = 0;
+    for (const data in sortedsubCategoryData) {
+      if (sortedsubCategoryData[data].length != 0) {
+        count++;
+        // console.log(count)
+
+        //sub category div-----------------------------------------
+        const subCategoryDiv = document.createElement("div");
+        subCategoryDiv.classList.add("mt-4", "md:mt-8", "sm:mt-[40px]");
+        categoryDiv.appendChild(subCategoryDiv);
+
+        // console.log(subCategoryDiv);
+
+        //subCategoryTitle-----------------------------------------
+        const subCategoryTitle = document.createElement("h2");
+        subCategoryTitle.innerText = data;
+        subCategoryTitle.classList.add(
+          "text-xl",
+          "sm:text-2xl",
+          "text-[#48389C]",
+          "font-[700]",
+          "text-left",
+          "max-w-[380px]",
+          "sm:max-w-none",
+          "m-auto"
+        );
+        subCategoryDiv.appendChild(subCategoryTitle);
+
+        // Cart Start-----------------------------------------
+        const outerDiv = document.createElement("div");
+        outerDiv.classList.add(
+          "grid",
+          "ssm:grid-cols-1",
+          "gap-5",
+          "sm:gap-4",
+          "sm:grid-cols-2",
+          "lg:grid-cols-3",
+          "2xl:grid-cols-4",
+          "mt-[17px]"
+        );
+        subCategoryDiv.appendChild(outerDiv);
+
+        sortedsubCategoryData[data].forEach((i) => {
+          // console.log(i.custom_product_category);
+          // Creting inner div
+          const innerDiv = document.createElement("div");
+          innerDiv.classList.add(
+            "bg-gradient-to-r",
+            "from-opacity-60",
+            "via-opacity-60",
+            "to-opacity-60",
+            "from-white",
+            "to-[rgba(205,212,241,0.6)]",
+            "mx-auto",
+            "w-full",
+            "max-w-[380px]",
+            "2xl:max-w-[300px]",
+            "ssm:min-w-[272px]",
+            "p-4",
+            "ssm:p-6",
+            "md:p-4",
+            "xl:p-6",
+            "2xl:p-4",
+            "border",
+            "border-[#C4C3CA]",
+            "rounded-[10px]"
+          );
+          outerDiv.appendChild(innerDiv);
+
+          // Text Div
+          const textDiv = document.createElement("div");
+          textDiv.classList.add("text");
+          innerDiv.appendChild(textDiv);
+
+          // Creating heading
+          const title = document.createElement("h2");
+          title.classList.add(
+            "text-xl",
+            "sm:text-2xl",
+            "text-[#48389C]",
+            "font-bold"
+          );
+          title.textContent = i.web_item_name;
+          textDiv.appendChild(title);
+
+          // Creating Base Price
+          const basePrice = document.createElement("p");
+          basePrice.classList.add("text-[#747E8C]", "text-[14px]");
+          basePrice.textContent = " Base Price: ";
+          textDiv.appendChild(basePrice);
+
+          const priceSpan = document.createElement("span");
+          priceSpan.classList.add("font-bold", "text-[#2C2C2C]");
+          priceSpan.textContent = "₹ " + formatter.format(i.custom_price);
+
+          basePrice.appendChild(priceSpan);
+
+          // Button Div
+          const buttonDiv = document.createElement("div");
+          buttonDiv.classList.add(
+            "buttons",
+            "flex",
+            "flex-col",
+            "msm:flex-row",
+            "sm:flex-col",
+            "md:flex-row",
+            "gap-4",
+            "mt-3"
+          );
+          innerDiv.appendChild(buttonDiv);
+
+          // Get a quote button
+          const getQuoteButton = document.createElement("a");
+          getQuoteButton.classList.add(
+            "btn-quote",
+            "bg-white",
+            "w-[100%]",
+            "md:w-[46%]",
+            "lg:w-auto",
+            "xl:w-[46%]",
+            "2xl:w-auto",
+            "text-[#4B5EAA]",
+            "border-[1px]",
+            "border-[#4B5EAA]",
+            "py-2.5",
+            "px-3",
+            "rounded",
+            "text-sm",
+            "font-medium",
+            "text-center"
+          );
+          getQuoteButton.textContent = "GET A QUOTE";
+          getQuoteButton.href = `./quote/${i.custom_website_path}`;
+
+          buttonDiv.appendChild(getQuoteButton);
+
+          //  View details button
+          const viewDetailsButton = document.createElement("a");
+          viewDetailsButton.classList.add(
+            "bg-white",
+            "w-[100%]",
+            "md:w-[46%]",
+            "lg:w-auto",
+            "xl:w-[46%]",
+            "2xl:w-auto",
+            "flex",
+            "justify-evenly",
+            "msm:justify-between",
+            "sm:justify-evenly",
+            "md:justify-between",
+            "items-center",
+            "gap-2.5",
+            "text-[#E98135]",
+            "border-[1px]",
+            "border-[#E98135]",
+            "py-2.5",
+            "px-3",
+            "rounded",
+            "text-sm",
+            "font-medium"
+          );
+          viewDetailsButton.textContent = "VIEW DETAILS";
+          viewDetailsButton.href = `/lubricant/${i.custom_website_path}`;
+
+          buttonDiv.appendChild(viewDetailsButton);
+
+          // Arrow in button
+          const arrowImage = document.createElement("img");
+          arrowImage.classList.add(
+            "h-[10px]",
+            "hidden",
+            "msm:block",
+            "sm:hidden",
+            "md:block"
+          );
+          arrowImage.src = "../../public/images/index/right_orange.svg";
+          viewDetailsButton.appendChild(arrowImage);
+        });
+
+        if (count != Object.keys(sortedsubCategoryData).length) {
+          const horizontalLine = document.createElement("hr");
+          horizontalLine.classList.add("mt-8", "sm:mt-[40px]");
+          subCategoryDiv.appendChild(horizontalLine);
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .btn-quote:hover {
+      background-color: bisque;
+    }
+    .btn-quote {
+      transition: all 0.4s ease-in-out;
+    }
+  </style>
+</Layout>

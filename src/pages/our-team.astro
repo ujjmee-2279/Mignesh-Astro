@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Ourteam from "../components/Ourteam.astro";
+---
+
+<Layout title="Mignesh Global" meta_title="Meet Our Experts - Mignesh Global's Dedicated Team of Industry Professionals." meta_desc="Get to know the passionate professionals committed to delivering top-grade products catering to different industries to our clients.">
+  <main>
+    <!-- team section  -->
+    <section class="team">
+      <section id="heading">
+        <div class="bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] text-[#FFFFFF] lg:h-[110px]"> 
+          <h2
+            class="container-1 leading-[40px] md:text-[32px] text-[24px] font-[700] md:p-[30px] lg:pt-[40px] lg:pb-[30px] pt-[10px] pb-[10px]"
+          >
+          Our Team
+          </h2>
+        </div>
+      </section>
+      <div class="team container-1 py-10 sm:py-20">
+        <div
+          class="members text-center grid md:grid-cols-2 lg:grid-cols-3 gap-20 items-center max-w-[1160px] m-auto"
+        >
+        <Ourteam
+        url="../../public/images/team/team_1.webp",
+        name="Arjun N. Pachani",
+        position="Managing Director"
+        email="arjun@migneshglobal.com"
+        links={false},
+        />
+
+        <Ourteam
+        url="../../public/images/team/team_2.webp",
+        name="Trusha Pachani",
+        position="Director"
+        email="trusha@migneshglobal.com"
+        links={false},
+        />
+
+        <Ourteam
+        url="../../public/images/team/team_3.webp",
+        name="Poonam Hingrajia",
+        position="Director (Operations Head)"
+        email="poonam@migneshglobal.com"
+        links={false},
+        />
+
+        <Ourteam
+        url="../../public/images/team/team_4.webp",
+        name="Hemanshu Vamja",
+        position="Director (Finance)"
+        email="hemanshu@migneshglobal.com"
+        links={false},
+        />
+
+        <Ourteam
+        url="../../public/images/team/team_6.webp",
+        name="Jay Makadia",
+        position="Business Development Manager"
+        email="jaymakadiya@migneshglobal.com"
+        links={false},
+        />
+
+        <Ourteam
+        url="../../public/images/team/team_5.webp",
+        name="Jay Ghetiya",
+        position="Logistics Manager"
+        email="logistics@migneshglobal.com"
+        links={false},
+        />
+        
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

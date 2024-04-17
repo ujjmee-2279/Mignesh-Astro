@@ -1,0 +1,42 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  path?: string;
+  text1?: string;
+  text2?: string;
+  link?: string;
+}
+
+const { path, text1, text2, link } = Astro.props;
+---
+
+<div
+  class="relative rounded-xl border border-[#9796C0] 2xl:w-[414px] 2xl:h-[162px] h-[152px]"
+>
+  <div>
+    <img class="rounded-xl 2xl:h-[160px] h-[150px] w-full" src={path} alt="image" />
+  </div>
+  <div class="absolute top-5 left-5">
+    <div
+      class="text-[#48389C] md:text-[24px] text-[18px] font-[700] leading-[25px] tracking-[0.01em] mb-[16px]"
+    >
+      <h2>{text1}</h2>
+      <h2>{text2}</h2>
+    </div>
+    <Button data="VIEW PRODUCTS" link={link} />
+    <!-- <button
+      class="text-base flex flex-wrap gap-3 h-11 px-3 items-center bg-[#E98135] rounded-[5px] text-white m-0"
+    >
+      <span>VIEW PRODUCTS</span>
+      <img src="../../public/assets/Vector2.svg" alt=">" />
+    </button> -->
+    <!-- <a
+      class="btn-6 z-10 mt-6 text-base flex gap-4 px-4 py-2.5 items-center bg-[#E98135] rounded-[5px] max-w-[184px] text-white m-auto md:m-0 uppercase"
+      href={link}
+    >
+      <span></span>
+       VIEW PRODUCTS
+      <img src="images/right_arrow.png" alt=">" />
+    </a> -->
+  </div>
+</div>

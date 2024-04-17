@@ -1,0 +1,202 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/Button.astro";
+import Infra_Card from "../components/quality_card.astro";
+import { Image } from "astro:assets";
+
+import Banner from "../components/Banner.astro";
+---
+
+<Layout title="Quality" meta_title="Quality Assurance at Mignesh Global - Delivering Excellence in Every Product" meta_desc="At Mignesh Global, quality is our commitment to our clients. Learn about our rigorous quality assurance processes ensuring that every product meets the highest standards.">
+  
+
+  <main>
+    <!-- hero banner start -->
+    <Banner
+    showButton={false}
+    h2text="Uncompromising Quality & Efficient Services: Delivering Excellence at <span class='font-bold'>Mignesh Global</span>."
+    ptext="<p class='xl:max-w-[480px]'>Elevating Standards with Mignesh Global's Quality Commitment. One step at a time.</p>"
+    laptop="../../public/images/quality/quality_laptop.webp"
+    tablet="../../public/images/quality/quality_tablet.webp"
+    mobile="../../public/images/quality/quality_mobile.webp"
+  />
+
+
+    <!-- <section
+      class="body-font w-full abc bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] relative overflow-hidden lg:py-20 flex items-center md:h-[430px] sm:h-[500px]"
+    >
+      <div
+        class="container-1 flex sm:flex-row flex-col mx-auto md:items-center"
+      >
+        <div class="lg:w-[52%] sm:w-1/2 sm:text-start text-center">
+          <h2 class="title-font font-normal text-[32px] text-[#FFFFFF]">
+            Uncompromising Quality & Efficient Services: Delivering Excellence
+            at <span class="font-bold">Mignesh Global</span>.
+          </h2>
+          <div class="w-[79%]">
+            <p class="leading-relaxed font-normal text-lg text-white pt-2">
+              Elevating Standards with Mignesh Global's Quality Commitment. One
+              step at a time.
+            </p>
+          </div>
+        </div>
+        <div class="">
+          <img
+            src="public/images/quality/Group 50.webp"
+            alt="Image"
+            class="2xl:w-[977px] xl:w-[655px] lg:w-[598px] md:h-[430px] md:w-[573px] flex sm:flex-row flex-col justify-end md:absolute bottom-0 right-0"
+          />
+        </div>
+      </div>
+    </section> -->
+
+    <!--hero banner end -->
+
+    <!-- section-2 start -->
+    <section
+      class="body-font w-full bg-white bg-center bg-cover lg:pt-[80px] md:pt-[60px] pt-[40px] md:pb-[79px] pb-10 overflow-hidden"
+    >
+      <div
+        class="container-1 flex xl:flex-row flex-col flex-nowrap xl:justify-between lg:items-start items-center"
+      >
+        <!-- about part start -->
+        <div class="xl:w-1/2 w-full text-start xl:pb-0 md:pb-10 pb-5 text-[#2C2C2C]">
+          <p
+            class="sm:leading-[24px] leading-snug text-base xl:max-w-[524px] xl:pb-6 pb-5 tracking-[0.16px]"
+          >
+            <span class="font-bold">At Mignesh Global,</span> we are committed
+            to delivering products of the highest possible quality in our
+            products, such as Bitumen, Bitumen Emulsion, Base Oil, and Fuel Oil,
+            to provide our customers with reliable and top-notch solutions.
+          </p>
+
+
+          <p class="sm:leading-[24px]  leading-snug xl:max-w-[524px] text-base tracking-[0.16px]">
+            Mignesh Global prioritizes quality and has established thorough
+            quality-checking systems to ensure that all products meet the
+            highest standards before reaching customers. Our experienced and
+            knowledgeable team conducts rigorous quality testing, ensuring every
+            product adheres to the strictest quality parameters.
+          </p>
+        </div>
+        <!-- end of about part -->
+
+        <!-- image start -->
+        <div class="xl:w-1/2 w-full flex xl:flex-row flex-col xl:justify-end  xl:ml-6">
+          <div class="xl:w-full ">
+            <img src="../../public/images/quality/quality_about.webp" alt="image" class="w-full" />
+          </div>
+        </div>
+        <!-- end of secod part of col -->
+      </div>
+    </section>
+  </main>
+  <!-- section-2 end -->
+
+  <!-- card start -->
+  <section
+    class="body-font w-full bg-white bg-center bg-cover md:pb-[55px] pb-10 overflow-hidden "
+  >
+    <div class="container-1 ">
+    <div class="mx-auto head-txt">
+      <!-- heading -->
+
+      <!-- <h1 class="title-font font-bold text-[#48389C] md:text-[32px] sm:text-[20px] md:pb-11 tracking-[0.32px]">
+        Here’s why Mignesh Global stand-out in terms of quality:
+      </h1> -->
+
+      <h2 class="lg:pb-11 pb-5 tracking-[0.32px]"> Here’s why Mignesh Global stand-out in terms of quality:</h2>
+    </div>
+
+      <div class="flex flex-wrap">
+        <!-- firsrt card -->
+        <Infra_Card
+          title="Automated quality control practices:"
+          data="We have automated quality control practices with world-class technology equipment, machinery, instruments, processes, and manpower to assure consistent quality for all of our products."
+          icon="../../public/images/quality/Vector.svg"
+        />
+
+        <!--Second card  -->
+        <Infra_Card
+          title="Strong supplier relationships:"
+          data="We have established strong partnerships with trusted suppliers that enable us to source premium raw materials, contributing to the overall quality of our products."
+          icon="../../public/images/quality/Vector (4).svg"
+        />
+       
+
+        <!-- third card -->
+        <Infra_Card
+          title="Established Standard Quality Processes:"
+          data="At Mignesh Global, we have established standard processes and quality control practices which are followed by our suppliers, manufacturing team, and quality control team as well."
+          icon="../../public/images/quality/Vector (2).svg"
+        />
+
+        <!-- fourth card -->
+        <Infra_Card
+          title="Research at the core:"
+          data="We continuously invest in research and development, seeking innovative ways to improve product quality and stay at the forefront of industry advancements."
+          icon="../../public/images/quality/Vector (3).svg"
+        />
+
+        <!-- fifth card -->
+        <Infra_Card
+        title="Evaluating necessary documents:"
+        data="Mignesh Global thoroughly checks all the documentation and certificates received by the suppliers to ensure the materials are of desired quality."
+        icon="../../public/images/quality/Vector (1).svg"
+      />
+      </div>
+    </div>
+  </section>
+  <!-- card end -->
+
+  <!-- section3 start -->
+  <section
+    class="body-font bg-center bg-cover lg:py-20 md:py-[60px] py-10 overflow-hidden w-full bg-[#F9F9FB]"
+  >
+    <div class="container-1">
+      <div
+
+        class="flex xl:flex-row flex-col flex-nowrap  xl:items-start items-center xl:ml-[114px] xl:mr-[103px]"
+      >
+        <div
+          class="xl:w-1/2  flex xl:justify-start lg:justify-center xl:pb-0 pb-8 "
+
+        >
+          <img
+            src="../../public/images/quality/Group 82.svg"
+            alt="image"
+
+            class=" object-cover "
+          />
+        </div>
+
+        <div class="xl:w-1/2">
+          <div class="xl:ml-[115px] ">
+          <p
+            class="sm:leading-[24px] leading-snug pb-8 top-1 text-base text-[#2C2C2C] tracking-[0.16px] "
+
+          >
+            The combination of intensive research and quality testing processes
+            propels our products to new heights of success, ensuring they meet
+            and exceed customer expectations.
+          </p>
+          <p
+            class="sm:leading-[30px] leading-snug text-[#2E2D6F] font-semibold text-xl sm:pb-1 pb-2 tracking-[0.2px]"
+          >
+            Looking for high-quality products for your infrastructure &
+            production industry requirements quickly & efficiently?
+          </p>
+          <h6
+            class="sm:leading-[35px] leading-snug font-bold text-[#E98135] md:text-xl sm:text-lg xl:pb-6 pb-4 tracking-[0.2px]"
+          >
+            Look no further than Mignesh Global.
+          </h6>
+
+          <Button data="Contact Now!" link="/contact" />
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+  <!--section3 end -->
+</Layout>

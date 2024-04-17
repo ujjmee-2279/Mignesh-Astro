@@ -1,0 +1,42 @@
+---
+
+import Button from "./Button.astro";
+interface Props {
+  showButton?: boolean;
+  ptext?: string;
+  h2text?: string;
+  laptop?: string;
+  mobile?:string;
+  tablet?:string;
+}
+
+const { ptext, h2text, showButton, laptop, mobile ,tablet } = Astro.props;
+
+---
+
+
+<section id="banner" class="text-white body-font bg-gradient-to-r from-[#252d4b] to-[#4b5eaa] relative overflow-hidden">
+    <div class="container-1 ">
+      <div class="contain flex  justify-center sm:justify-normal sm:items-center h-[600px] msm:h-[570px] ssm:h-[560px] sm:h-[371px] lg:h-[430px]">
+        <div class="text pt-10 sm:pt-0 max-w-[400px] sm:max-w-[300px] md:max-w-[400px] lg:max-w-[500px] xl:max-w-[550px] 2xl:max-w-[682px]">
+          <h2 class=" text-2xl lg:text-3xl xl:text-[32px] xl:leading-10 mb-3 md:mb-5">
+            <Fragment set:html={h2text} />
+          </h2>
+          <p class="1 text-base lg:text-lg lg:leading-6 mb-4">
+            <Fragment set:html={ptext} />
+          </p>
+          {showButton && <Button data="Browse Now" link="#our_product" />}
+        </div>
+        
+  
+        <div class="image absolute right-0 md:right-[-100px] xl:right-[-38px] 2xl:right-0 bottom-0 sm:top-0 overflow-hidden">        
+          <img class="hidden xl:block" src={laptop} alt="image">
+          <img class="hidden md:block xl:hidden" src={tablet} alt="image">
+          <img class="md:hidden block " src={mobile} alt="image">
+  
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  

@@ -1,0 +1,579 @@
+---
+import ProductCta from "../../components/Product_cta.astro";
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+  const response = await fetch(
+    "http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_product_category%22,%22=%22,%22Bitumen%20and%20Bitumen%20Products%22],[%22published%22,%22=%22,%221%22]]&fields=[%22*%22]"
+  );
+  const data = await response.json();
+
+  const paths = data.data.map((productName) => ({
+    params: { productname: productName.custom_website_path },
+    props: {
+      product_img: productName.custom_product_image,
+      proper_product_name: productName.web_item_name,
+      custom_img:
+        "http://192.168.2.126:8001/" +
+        productName.custom__product_application_image,
+      custom_banner_img:
+        "http://192.168.2.126:8001/" + productName.custom_product_image,
+      price: productName.custom_price,
+      product_id: productName.name,
+    },
+  }));
+
+  return paths;
+}
+
+const { productname } = Astro.params;
+const {
+  proper_product_name,
+  custom_img,
+  custom_banner_img,
+  price,
+  product_id,
+} = Astro.props;
+
+const resp = await fetch(
+  `http://192.168.2.126:8001/api/resource/Website%20Item/${product_id}`
+);
+const data2 = await resp.json();
+const product_application = data2.data.custom_application;
+---
+
+<Layout title={productname}>
+  <section class="team">
+    <section id="heading">
+      <div
+        class="bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] text-[#FFFFFF] lg:h-[110px] flex flex-col justify-center items-center md:p-[30px] lg:p-0 pt-[10px] pb-[10px]"
+      >
+        <span
+          id="productCat"
+          class="block text-sm sm:text-base font-bold container-1 uppercase"
+          >Bitumen and Bitumen Products</span
+        ><h2
+          class="container-1 product-name leading-6 md:text-[32px] text-[24px] font-[700]"
+        >
+          {proper_product_name}
+        </h2>
+      </div>
+    </section><!-- Second Section -->
+    <div class="container-1 py-8 sm:py-14 lg:py-20" id="styles">
+      <div class="grid md:grid-cols-2 grid-cols-1">
+        <div class="order-2 md:order-1">
+          <div class="head-txt">
+            <h3
+              class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+            >
+              Application of
+            </h3><h3
+              class="text-[#48389C] product-name text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+            >
+              {proper_product_name}
+            </h3>
+          </div><div id="heading">
+            <div class="mt-4 sm:mt-[28px] ml-1 sm:ml-[20px]">
+              <ul class="" id="application">
+                {
+                  product_application.map((data) => (
+                    <li class="flex mt-3 sm:mt-6 gap-2.5">
+                      <>
+                        <div class="w-5">
+                          <div>
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <>
+                                <path
+                                  d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
+                                  fill="#E98135"
+                                />
+                                <path
+                                  d="M4.22006 18.1614C3.30008 17.5087 2.49525 16.7043 1.842 15.7847L9.02935 8.59799L6.64148 6.21032C6.54431 6.11072 6.47844 5.98487 6.45196 5.84827C6.42548 5.71168 6.43956 5.57032 6.49247 5.44163C6.54538 5.31295 6.6348 5.20256 6.7497 5.12409C6.86461 5.04561 6.99997 5.00247 7.1391 5H14.2872C14.4757 5.00175 14.656 5.07742 14.7893 5.2107C14.9226 5.34399 14.9982 5.52425 15 5.71274V12.8603C14.9975 12.9994 14.9544 13.1347 14.8759 13.2496C14.7974 13.3645 14.6871 13.4539 14.5584 13.5068C14.4297 13.5598 14.2883 13.5738 14.1517 13.5474C14.0151 13.5209 13.8892 13.455 13.7896 13.3578L11.4068 10.9752L4.22006 18.1614Z"
+                                  fill="white"
+                                />
+                              </>
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="max-w-[85%]">{data.application}</div>
+                      </>
+                    </li>
+                  ))
+                }
+              </ul>
+            </div>
+          </div>
+        </div><div class="order-1 md:order-2">
+          <img id="application_image" alt="drums" src={custom_img} />
+        </div>
+      </div>
+    </div><div class="container-1">
+      <div>
+        <div id="heading_div" class="mb-6 sm:mb-[49px]">
+          <div class="head-txt">
+            <h3
+              class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+            >
+              Specification
+            </h3><h3
+              class="text-[#48389C] product-name text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+            >
+              {proper_product_name}
+            </h3>
+          </div>
+        </div>
+      </div><div
+        class="flex lg:flex-row flex-col justify-between md:gap-[25px] gap-[15px]"
+      >
+        <div class="order-2 lg:order-1">
+          <div
+            class="relative overflow-x-auto shadow-md rounded-lg xl:w-[800px] lg:w-[550px] border-[1px] border-[#AAACB8]"
+          >
+            <table class="text-left w-full">
+              <thead class="bg-[#48389C1A] text-[#48389C]"
+                ><tr
+                  ><th
+                    scope="col"
+                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                  >
+                    Specification
+                  </th><th
+                    scope="col"
+                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                  >
+                    Unit
+                  </th><th
+                    scope="col"
+                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                  >
+                    Value
+                  </th><th
+                    scope="col"
+                    class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                  >
+                    Test Method
+                  </th></tr
+                ></thead
+              >
+              <tbody id="table-body">
+                
+                <tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Absolute Viscosity, at 60 ◦C</th
+                  ><td class="px-4 py-[15px]">Poise</td><td
+                    class="px-4 py-[15px]">Min 800</td
+                  ><td class="px-4 py-[15px]">ASTM D4402</td>
+                </tr>
+
+                <tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Kinematic Viscosity, at 135 ◦C</th
+                  ><td class="px-4 py-[15px]">CST</td><td class="px-4 py-[15px]"
+                    >Min 250</td
+                  ><td class="px-4 py-[15px]">ASTM D2170</td></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Flash Point</th
+                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
+                    >Min 220</td
+                  ><td class="px-4 py-[15px]">ASTM D93</td></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Solubility in Trichloroethylene</th
+                  ><td class="px-4 py-[15px]">%WT</td><td class="px-4 py-[15px]"
+                    >Min 99</td
+                  ><td class="px-4 py-[15px]">ASTM D2042</td></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Penetration Value, at 25 ◦C</th
+                  ><td class="px-4 py-[15px]">0.1mm</td><td
+                    class="px-4 py-[15px]">80-100</td
+                  ><td class="px-4 py-[15px]">ASTM D5</td></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Softening Point</th
+                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
+                    >Min 40</td
+                  ><td class="px-4 py-[15px]">ASTM D36</td></tr
+                ><tr class="border-b text-left"
+                  ><th
+                    colspan="4"
+                    class="border-b text-left text-[#48389C] px-4 py-[15px] bg-[#48389C08]"
+                    >Thin-Film Oven Test (TFOT)</th
+                  ></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Viscosity Ratio, at 60 ◦C</th
+                  ><td class="px-4 py-[15px]">◦C</td><td class="px-4 py-[15px]"
+                    >Max 4</td
+                  ><td class="px-4 py-[15px]">ASTM D4402</td></tr
+                ><tr class="border-b text-left"
+                  ><th class="px-4 py-4 whitespace-nowraptext-black"
+                    >Ductility at 25 ◦C , after thin film oven test</th
+                  ><td class="px-4 py-[15px]">Cm</td><td class="px-4 py-[15px]"
+                    >Min 75</td
+                  ><td class="px-4 py-[15px]">ASTM D113</td></tr
+                >
+              </tbody>
+            </table>
+          </div>
+        </div><div
+          class="order-1 lg:order-2 border-[1px] rounded-lg mx-auto lg:mx-0 2xl:w-[410px] 2xl:h-[510px] xl:w-[300px] xl:h-[400px] lg:w-[270px] lg:h-[370px] border-[#C4C3CA]"
+        >
+          <div
+            id="details"
+            class="bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] rounded-t-lg h-[60px] pt-[6px] md:pt-0"
+          >
+            <h2
+              class="product_name text-[white] font-[700] md:leading-[32px] leading-[20px] text-[24px] pl-[14px] 2xl:pt-[8px] pt-[4px]"
+            >
+              {proper_product_name}
+            </h2><div id="price" class="flex pb-[4px] 2xl:pb-[6px]">
+              <h5
+                class="font-[400] leading-[24px] md:leading-[18px] 2xl:leading-[14px] text-[14px] pl-[14px] text-[#A2A6AC]"
+              >
+                Base Price:
+              </h5><p
+                id="base-price"
+                class="text-[16px] font-[600] leading-[26px] md:leading-[20px] 2xl:leading-[16px] text-[white] pl-3"
+              >
+                ₹ {price}.0
+              </p>
+            </div>
+          </div><div>
+            <img
+              id="product-image"
+              src={custom_banner_img}
+              alt="drum"
+              class="mx-auto 2xl:h-[390px] xl:h-[280px] lg:h-[250px] object-cover"
+            />
+          </div><div class="flex justify-center items-center h-[60px]">
+            <div>
+              <a
+                href=`/quote/${productname}`
+                type="button"
+                id="get-quote"
+                class="bg-[#E98135] text-[white] text-[16px] leading-[24px] font-[400] rounded-[5px] 2xl:px-7 2xl:py-3 xl:px-5 xl:py-2 lg:px-4 px-3 py-2 object-cover"
+                >GET A QUOTE</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><div class="mt-[101px]">
+      <section class="bg-[#F9F9FB]">
+        <div class="container-1">
+          <div class="grid grid-cols-1 lg:grid-cols-2 h-fit-content m-auto">
+            <div
+              class="md:py-[80px] pb-[45px] pt-[45px] left-[975px] lg:text-left text-center md:order-first order-last"
+            >
+              <h2
+                class="xl:text-[38px] sm:text-[32px] lg:text-[28px] text-[24px] lg:leading-[46px] sm:leading-[40px] leading-[28px] text-[#48389C] font-bold"
+              >
+                Get your free sample now!
+              </h2><div class="sm:pt-7 pt-5 flex justify-center lg:block">
+                <div>
+                  <!-- Client Section Slider Jquery Script   -->
+                  <link
+                    rel="stylesheet"
+                    href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"
+                  /><script
+                    src="https://code.jquery.com/jquery-2.2.0.min.js"
+                    type="text/javascript"></script><div
+                    class="flex w-full justify-start items-end"
+                  >
+                    <a
+                      class="btn-6 z-10 text-base text-white bg-[#E98135] border-0 py-1 px-2 ssm:p-2 gap-2 md:py-2 md:px-4 md:gap-4 rounded uppercase flex flex-row items-center"
+                      href="/contact"
+                      ><span></span><p class="">CONTACT NOW!</p><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="9"
+                        height="13"
+                        viewBox="0 0 9 13"
+                        fill="none"
+                        class="my-2"
+                        ><path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M1.917 12.009L0 10.122L4.182 6.005L0 1.887L1.917 0L8.014 6.005L1.917 12.009Z"
+                          fill="white"></path></svg
+                      ></a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div><div
+              class="md:w-full md:py-0 py-[45px] lg:flex hidden justify-center md:justify-end items-center"
+            >
+              <img
+                src="../../public/images/infra/Group 149.webp"
+                alt="Mask Group"
+                class="xl:h-full md:h-[200px] h-[160px]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+</Layout>
+
+<!-- <script>
+  const apiKey = import.meta.env.PUBLIC_ApiKey as string;
+  const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const website_path = urlParams.get("product");
+  // const website_path = "vg-10-bulk";
+
+  if (website_path) {
+    const get_id_API = await fetch(
+      `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `token ${apiKey}:${secretKey}`,
+        },
+      }
+    );
+
+    const get_id_data = await get_id_API.json();
+    const get_id = get_id_data.data;
+
+    if (get_id && get_id[0] && get_id[0].name) {
+      const id = get_id[0].name ? get_id[0].name : "";
+      // console.log(get_id);
+
+      const respose = await fetch(
+        `http://192.168.2.126:8001/api/resource/Website Item/${id}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `token ${apiKey}:${secretKey}`,
+          },
+        }
+      );
+
+      const responseData = await respose.json();
+      const tableData = responseData.data;
+
+      if (tableData && tableData.published === 1) {
+        // console.log(tableData);
+        // console.log(tableData.custom_website_path);
+
+        const title = tableData.custom_meta_title
+          ? tableData.custom_meta_title
+          : "Delivering Quality Raw Materials at Competitive Prices.";
+
+        const description = tableData.custom_meta_description
+          ? tableData.custom_meta_description
+          : "Explore Mignesh Global's comprehensive grades of high-quality raw materials, including Bitumin products, lubricants materials, petroleum products at affordable rates.";
+
+        UpdateMeta(title, description);
+        // SET META TITLE AND DESC FOR PERTICULAR PRODUCT
+        function UpdateMeta(title, description) {
+          var meta_title = document.querySelector('meta[name="title"]');
+          var meta_description = document.querySelector(
+            'meta[name="description"]'
+          );
+          meta_title.setAttribute("content", title);
+          meta_description.setAttribute("content", description);
+        }
+
+        const subRespose = await fetch(
+          // `http://192.168.2.126:8001/api/resource/Website%20Product%20Specification`,
+          `http://192.168.2.126:8001/api/resource/Website%20Product%20Specification`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `token ${apiKey}:${secretKey}`,
+            },
+          }
+        );
+
+        const subResponseData = await subRespose.json();
+        const subData = subResponseData.data;
+
+        // console.log(subData);
+
+        // console.log(responseData)
+        // console.log(tableData);
+        console.log("object");
+
+        //for application
+        const ul = document.getElementById("application");
+        // console.log(ul);
+        tableData.custom_application.forEach((element) => {
+          const li = document.createElement("li");
+          li.classList.add("flex", "mt-3", "sm:mt-6", "gap-2.5");
+          ul.appendChild(li);
+
+          const bullet_div = document.createElement("div");
+          bullet_div.classList.add("w-5");
+          li.appendChild(bullet_div);
+
+          var svgString =
+            '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z" fill="#E98135"/>' +
+            '<path d="M4.22006 18.1614C3.30008 17.5087 2.49525 16.7043 1.842 15.7847L9.02935 8.59799L6.64148 6.21032C6.54431 6.11072 6.47844 5.98487 6.45196 5.84827C6.42548 5.71168 6.43956 5.57032 6.49247 5.44163C6.54538 5.31295 6.6348 5.20256 6.7497 5.12409C6.86461 5.04561 6.99997 5.00247 7.1391 5H14.2872C14.4757 5.00175 14.656 5.07742 14.7893 5.2107C14.9226 5.34399 14.9982 5.52425 15 5.71274V12.8603C14.9975 12.9994 14.9544 13.1347 14.8759 13.2496C14.7974 13.3645 14.6871 13.4539 14.5584 13.5068C14.4297 13.5598 14.2883 13.5738 14.1517 13.5474C14.0151 13.5209 13.8892 13.455 13.7896 13.3578L11.4068 10.9752L4.22006 18.1614Z" fill="white"/>' +
+            "</svg>";
+
+          var bullet = document.createElement("div");
+          bullet.innerHTML = svgString;
+          bullet_div.appendChild(bullet);
+
+          const text_div = document.createElement("div");
+          text_div.classList.add("max-w-[85%]");
+          text_div.innerText = element.application;
+          li.appendChild(text_div);
+        });
+
+        // console.log(specificatinData);
+        // console.log(tableData.web_item_name);
+        // console.log(tableData.custom_price);
+        // console.log(tableData.custom_product_image);
+        // console.log(tableData.custom__product_application_image);
+        // console.log(tableData.published)
+
+        //  Product Application Image
+        let apllicationImage = ((
+          document.getElementById("application_image") as HTMLImageElement
+        ).src =
+          "http://192.168.2.126:8001/" +
+          tableData.custom__product_application_image);
+
+        let productName = document.getElementsByClassName("product-name");
+        let productCat = document.getElementById("productCat");
+
+        // console.log(tableData.custom_product_category)
+        if (
+          tableData.custom_product_category == "Bitumen and Bitumen Products"
+        ) {
+          productCat.innerText = "Bitumen and Bitumen Products";
+          for (let i = 0; i < productName.length; i++) {
+            productName[i].textContent = tableData.web_item_name;
+          }
+        }
+        if (tableData.custom_product_category == "Lubricant Raw Material") {
+          productCat.innerText = "Lubricant Raw Material";
+          for (let i = 0; i < productName.length; i++) {
+            productName[i].textContent = tableData.web_item_name;
+          }
+        }
+
+        if (tableData.custom_product_category == "Petroleum Products") {
+          productCat.innerText = "Petroleum Products";
+          for (let i = 0; i < productName.length; i++) {
+            productName[i].textContent = tableData.web_item_name;
+          }
+        }
+
+        let product_name = document.querySelector(".product_name");
+        product_name.textContent = tableData.web_item_name;
+
+        let basePrice = document.getElementById("base-price");
+        basePrice.innerText = tableData.custom_price.toLocaleString("en-IN", {
+          style: "currency",
+          currency: "INR",
+        });
+
+        // Give link to the Get a Quote Button
+        const quoteButoon = document.getElementById(
+          "get-quote"
+        ) as HTMLAnchorElement;
+        quoteButoon.href = `/quote?product=${tableData.custom_website_path}`;
+
+        // Product Image
+        let productImage = ((
+          document.getElementById("product-image") as HTMLImageElement
+        ).src = "http://192.168.2.126:8001/" + tableData.custom_product_image);
+
+        const tBody = document.getElementById("table-body");
+        const jsonData = tableData.custom_website_product_specification;
+        // console.log(jsonData)
+        const que = subData;
+        const table_data = {};
+
+        for (const item of que) {
+          const name = item.name;
+          // console.log(name)
+          const temp = [];
+          for (const dataItem of jsonData) {
+            if (dataItem.specification_type === name) {
+              // console.log(name);
+              temp.push(dataItem);
+            }
+          }
+          table_data[name] = temp;
+        }
+        // console.log(table_data);
+
+        for (const data in table_data) {
+          // console.log(data);
+
+          if (table_data[data].length != 0) {
+            // console.log(data);
+            const row = table_data[data];
+            const tBody = document.getElementById("table-body");
+            // console.log(row);
+
+            if (data != "Specification") {
+              const tRowh = document.createElement("tr");
+              tRowh.classList.add("border-b", "text-left");
+              tBody.appendChild(tRowh);
+
+              const tHead = document.createElement("th");
+              tHead.colSpan = 4;
+              tHead.innerText = data;
+              tHead.classList.add(
+                "border-b",
+                "text-left",
+                "text-[#48389C]",
+                "px-4",
+                "py-[15px]",
+                "bg-[#48389C08]"
+              );
+              tRowh.appendChild(tHead);
+            }
+            // console.log(row)
+
+            row.forEach((element) => {
+              const tRow = document.createElement("tr");
+              tRow.classList.add("border-b", "text-left");
+              tBody.appendChild(tRow);
+
+              const Specification = document.createElement("th");
+              Specification.innerText = element.specification;
+              Specification.classList.add(
+                "px-4",
+                "py-4",
+                "whitespace-nowraptext-black"
+              );
+              tRow.appendChild(Specification);
+
+              const Unit = document.createElement("td");
+              Unit.innerText = element.unit;
+              Unit.classList.add("px-4", "py-[15px]");
+              tRow.appendChild(Unit);
+
+              const Value = document.createElement("td");
+              Value.innerText = element.value;
+              Value.classList.add("px-4", "py-[15px]");
+              tRow.appendChild(Value);
+
+              const TestMethod = document.createElement("td");
+              TestMethod.innerText = element.test_method;
+              TestMethod.classList.add("px-4", "py-[15px]");
+              tRow.appendChild(TestMethod);
+            });
+          }
+        }
+      }
+    }
+  }
+</script> -->

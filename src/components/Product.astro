@@ -1,0 +1,90 @@
+---
+interface Props {
+  title?: string;
+  body1?: string;
+  body2?: string;
+  source?: string;
+  link?: string;
+  btn?: string;
+}
+
+const { title, source, body1, body2, btn, link } = Astro.props;
+---
+
+<div class="product max-w-[450px] xl:max-w-[414px]">
+  <div class="head bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] text-white">
+    <h2 class="px-3.5 py-2.5 ssm:p-4 font-bold text-lg">
+      <Fragment set:html={title} />
+    </h2>
+  </div>
+  <div class="image">
+    <img class="w-full" src={source} alt="procuct" />
+  </div>
+  <div class="text p-3.5 ssm:p-5 bg-[#E4E7EC] text-[#2C2C2C] text-base">
+    <p>
+      {body1}
+    </p>
+    <h3 class="mt-3.5 ssm:my-5 font-semibold">
+      {body2}
+    </h3>
+  </div>
+  <div class="btn w-full bg-[#DADCE4]">
+    <a
+      href={link}
+      class="flex w-full p-3.5 ssm:px-7 ssm:py-5 gap-8 justify-between sm:justify-start items-center relative"
+    >
+      <span class="font-bold text-base z-10">
+        {btn}
+      </span>
+      <img
+        class=""
+        src="../../public/images/index/right_orange.svg"
+        alt=">"
+      />
+    </a>
+  </div>
+</div>
+
+<style>
+  a img {
+    transition: all 0.3s ease-in-out;
+    transform: translateX(0);
+  }
+  @media (min-width: 640px) {
+    a img {
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    left: 50%;
+    transform: translateX(50%);
+    opacity: 0;
+  }
+    a:hover img {
+      transform: translateX(1550%);
+      opacity: 1;
+    }
+  }
+  @media (min-width: 768px) {
+    a:hover img {
+      transform: translateX(1100%);
+      opacity: 1;
+    }
+  }
+  @media (min-width: 1024px) {
+    a:hover img {
+      transform: translateX(1600%);
+      opacity: 1;
+    }
+  }
+  @media (min-width: 1280px) {
+    a:hover img {
+      transform: translateX(1250%);
+      opacity: 1;
+    }
+  }
+  @media (min-width: 1536px) {
+    a:hover img {
+      transform: translateX(1420%);
+      opacity: 1;
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+interface Props {
+	source: string;
+	body: string;
+}
+
+const { source, body } = Astro.props;
+---
+
+<div class="max-w-[170px] flex-auto w-full ssm:max-w-[194px] text-center">
+    <div class=" w-[80%] ssm:w-[40%] md:w-[60%] lg:w-fit m-auto my-3">
+        <img class="m-auto " src={source} loading="lazy" alt="why">
+    </div>
+    <p class="">
+        <Fragment set:html={body}/>
+    </p>
+</div>
+
+
+

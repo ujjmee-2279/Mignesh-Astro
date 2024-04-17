@@ -1,0 +1,36 @@
+---
+import Button from "../components/Button.astro";
+interface Props {
+	head: string;
+  button_text: string;
+}
+
+const {button_text, head } = Astro.props;
+---
+
+
+<section class="bg-[#F9F9FB]  " >
+    <div class="container-1">
+      <div class="grid grid-cols-1 lg:grid-cols-2 h-fit-content m-auto">
+        <div class="md:py-[80px] pb-[45px] pt-[45px] left-[975px]  lg:text-left text-center md:order-first  order-last">
+          <h2 class="xl:text-[38px] sm:text-[32px] lg:text-[28px] text-[24px] lg:leading-[46px] sm:leading-[40px]  leading-[28px] text-[#48389C] font-bold">
+            {head}
+          </h2>
+
+          <div class="sm:pt-7 pt-5 flex justify-center lg:block">
+
+            <div >
+          <Button data={button_text} link="/contact"/>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-full  md:py-0 py-[45px] lg:flex hidden justify-center md:justify-end items-center ">
+          <img
+            src="../../public/images/infra/Group 149.webp"
+            alt="Mask Group"
+            class="xl:h-full md:h-[200px] h-[160px]"
+          />
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,404 @@
+---
+import logo from "../assets/Mignesh-logo.webp";
+import slogo from "../assets/logo-small.webp";
+import facebook from "../assets/facebook.webp";
+import twitter from "../assets/twitter.webp";
+import linkedin from "../assets/linkdin.webp";
+import vector from "../assets/Vector.webp";
+import down from "../assets/down-arrow.webp";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>Header</title>
+  </head>
+  <style>
+    #navbar a {
+      box-sizing: border-box;
+      font-size: 16px !important;
+      font-weight: 400;
+      line-height: 18.75px;
+    }
+
+    #drop-arrow-1,
+    #drop-arrow-2 {
+      transition: all 0.1s linear;
+    }
+  </style>
+  <body>
+    <!-- header starts here -->
+
+    <section id="navbar">
+      <header>
+        <div class="bg-[#2E2C70] w-full">
+          <div class="container-1 text-right py-2 sm:py-[10.625px]">
+            <a
+              href="login#login"
+              class="relative text-[#FFFFFF] uppercase text-[16px] leading-[18.75px] font-normal hover:text-[#E98135]"
+              >employee login
+            </a>
+          </div>
+        </div>
+      </header>
+      <header class="nav_bar sticky top-0 w-full z-[10000] bg-[#FFFFFF]">
+        <div id="nav-header">
+          <div class="container-1 p-0 bg-[#FFFFFF] w-full py-2 sm:py-[18px]">
+            <nav>
+              <div class="flex justify-between items-center">
+                <div>
+
+                  <a href="../">
+                    <img
+                      src="../../public/images/header/Mignesh-logo.svg"
+                      alt="Mignesh-Logo"
+                      class="lg:w-auto md:w-[150px] w-[160px]"
+                    />
+                  </a>
+                </div>
+                <div
+                  class="hidden lg:flex lg:gap-[32px] md:gap-[10px] md:text-[10px]"
+                >
+                  <div class="relative group top-[11px]">
+                    <a href="/about" class="hover:text-[#E98135] flex gap-1">
+                      ABOUT US
+                      <img
+                        src="../../public/images/header/down-arrow.webp"
+                        alt="down chevron"
+                        class="w-3 h-4 hidden lg:inline"
+                      />
+                    </a>
+                    <div
+                      class="absolute left-[-10px] top-[30px] md:hidden bg-[#F6F4FE] text-black group-hover:block w-[210px]"
+                      style="box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.15"
+                    >
+                      <a
+                        href="/infrastructure"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Infrastructure</a
+                      >
+                      <a
+                        href="/our-team"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Our Team</a
+                      >
+                      <a
+                        href="/csr"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Social Responsibility</a
+                      >
+                    </div>
+                  </div>
+                  <div class="relative group top-[11px]">
+                    <a class="hover:text-[#E98135] flex gap-1 cursor-pointer">
+                      PRODUCTS
+                      <img
+                        src="../../public/images/header/down-arrow.webp"
+                        alt="down chevron"
+                        class="w-3 h-4 hidden lg:inline"
+                      />
+                    </a>
+                    <div
+                      class="absolute left-[-10px] top-[30px] md:hidden bg-[#F6F4FE] text-black group-hover:block w-[210px]"
+                      style="box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.15"
+                    >
+                      <a
+                        href="/bitumen"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Bitumen & Bitumen Products</a
+                      >
+                      <a
+                        href="/lubricant"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Lubricant Raw Material</a
+                      >
+                      <!-- <a href="/building-con" class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]">Building & Construction Raw Material</a> -->
+                      <a
+                        href="/petroleum"
+                        class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                        >Petroleum Products</a
+                      >
+                      <!-- <a href="/polymer" class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]">Polymer Products</a> -->
+
+                    </div>
+                  </div>
+
+                  <!-- <a href="" class="hover:text-[#E98135]  py-[11px]">PRODUCTS</a> -->
+
+                  <a href="/quality" class="hover:text-[#E98135] py-[11px]"
+                    >QUALITY</a
+                  >
+                  <a href="/contact" class="hover:text-[#E98135] py-[11px]"
+                    >CONTACT</a
+                  >
+                  <a href="/quote" class="">
+                    <button
+                      class="text-[#FFFFFF] bg-[#4B5EAA] font-medium py-[11px] px-[18px] rounded-[5px] hover:bg-[#E98135]"
+                      >GET A QUOTE</button
+                    >
+                  </a>
+                </div>
+                <div class="lg:hidden">
+                  <button id="mobile-menu-button" aria-label="dot ">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      class="h-6 w-6"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </nav>
+            <div id="mobile-menu" class="hidden lg:hidden">
+              <div class="mt-2 bg-[white]">
+
+                <div class="relative group top-[10px]">
+                  <div class="1 flex items-center justify-between">
+                    <a
+                      href="/about"
+                      class="block py-2 px-2 hover:bg-[#E98135] hover:text-white rounded relative"
+                    >
+                      ABOUT US
+                    </a>
+                    <button
+                      id="mobile-about"
+                      class="block relative cursor-none"
+                    >
+                      <img
+                        src="../../public/images/header/down-arrow.webp"
+                        alt="down chevron"
+                        class="w-3 h-4"
+                        id="drop-arrow-1"
+                      />
+                      <!-- <span class="bg-black block h-0.5 w-3 absolute  top-[50%] translate-y-[-50%]"></span>
+                          <span class="bg-black block h-0.5 w-3 rotate-90 absolute top-[50%] translate-y-[-50%]"></span> -->
+
+                    </button>
+                  </div>
+                  <div
+                    id="mobile-about-dropdown"
+                    class="hidden bg-[#F6F4FE] text-black"
+                    style="box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.15"
+                  >
+                    <a
+                      href="/infrastructure"
+                      class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                      >INFRASTRUCTURE</a
+                    >
+                    <a
+                      href="/our-team"
+                      class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                      >OUR TEAM</a
+                    >
+                    <a
+                      href="/csr"
+                      class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                      >SOCIAL RESPONSIBILITY</a
+                    >
+                  </div>
+                </div>
+                <div
+                  id="mobile-products"
+                  class="flex items-center justify-between"
+                >
+                  <a
+                    class="block py-2 px-2 hover:bg-[#E98135] hover:text-white rounded mt-[8px]"
+                    >PRODUCTS</a
+                  >
+                  <button class="block relative mt-2 cursor-none">
+                    <img
+                      src="../../public/images/header/down-arrow.webp"
+                      alt="down chevron"
+                      class="w-3 h-4"
+                      id="drop-arrow-2"
+                    />
+                    <!-- <span class="bg-black block h-0.5 w-3 absolute  top-[50%] translate-y-[-50%]"></span>
+                        <span class="bg-black block h-0.5 w-3 rotate-90 absolute top-[50%] translate-y-[-50%]"></span> -->
+                  </button>
+                </div>
+                <div
+                  id="mobile-products-dropdown"
+                  class="hidden bg-[#F6F4FE] text-black group-hover:block"
+                  style="box-shadow: 4px 4px 4px 0px rgba(0,0,0,0.15"
+                >
+                  <a
+                    href="/bitumen"
+                    class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                    >Bitumen & Bitumen Products</a
+                  >
+                  <a
+                    href="/lubricant"
+                    class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                    >Lubricant Raw Material</a
+                  >
+                  <!-- <a href="/building-con" class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]">Building & Construction Raw Material</a> -->
+                  <a
+                    href="/petroleum"
+                    class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]"
+                    >Petroleum Products</a
+                  >
+                  <!-- <a href="/polymer" class="block px-[13px] py-[8px] border-[#E4DFFC] border-b-[1px] hover:bg-[#E4DFFC]">Polymer Products</a> -->
+                </div>
+                <a
+                  href="/quality"
+                  class="block py-2 px-2 hover:bg-[#E98135] hover:text-white rounded"
+                  >QUALITY</a
+                >
+                <a
+                  href="/contact"
+                  class="block py-2 px-2 hover:bg-[#E98135] hover:text-white rounded"
+                  >CONTACT</a
+                >
+                <a href="/quote" class="block py-2">
+                  <button
+                    class="text-[#FFFFFF] bg-[#4B5EAA] font-medium py-[11px] px-[18px] rounded-[5px] hover:bg-[#E98135]"
+                    >GET A QUOTE</button
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <!-- header ends here -->
+    <!-- <section class="h-[200vh] bg-[cyan]"></section> -->
+    <!-- footer starts here -->
+    <!-- <footer class="bg-[#2E2B70] max-w-full">
+      <div class="container-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:py-[80px] py-[20px] h-auto justify-between">
+        <div class="max-w-[367px]">
+          <img src={slogo.src} alt="mignesh-logo">
+          <br>
+          <a href="#" class="leading-[20px] text-[#AAACB8] hover:text-[#FEC49A] text-justify">
+            B-308, Shaligram Lakeview,<br> Opp.Balaji Wind Park,<br>
+            Nr. Vaishnodevi Circle,<br> Sardar Patel Ring Road,<br>
+            Ahmedabad, Gujarat - 382421
+          </a>
+          <div class="flex flex-row gap-[17px] md:mt-4 mt-2">
+            <a href="#">
+              <img src={facebook.src} alt="facebook" class="hover:bg-[#FEC49A] hover:rounded-3xl">
+            </a>
+            <a href="#">
+              <img src={twitter.src} alt="facebook" class="hover:bg-[#FEC49A] hover:rounded-3xl">
+            </a>
+            <a href="#">
+              <img src={linkedin.src} alt="facebook" class="hover:bg-[#FEC49A] hover:rounded-3xl">
+            </a>
+          </div>
+        </div>
+        <div class="lg:ml-12">
+          <h1 class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[20px]">Products</h1>
+          <br>
+          <ul>
+            <li class="my-0">
+              <a href="#" class="text-[#AAACB8] hover:text-[#FEC49A]">
+                Bitumen & Bitumen Products
+              </a>
+            </li>
+            <li class="my-1">
+              <a href="#" class="xl:leading-[32px] text-[#AAACB8] hover:text-[#FEC49A]">
+                Lubricant Raw Material
+              </a>
+            </li>
+            <li class="my-1">
+              <a href="#" class="xl:leading-[12px]  text-[#AAACB8] hover:text-[#FEC49A]">
+                Building & Construction Raw Material
+              </a>
+            </li>
+            <li class="my-1">
+              <a href="#" class="xl:leading-[32px]  text-[#AAACB8] hover:text-[#FEC49A]">
+                Petroleum Products
+              </a>
+            </li>
+            <li class="my-1">
+              <a href="#" class="xl:leading-[12px] text-[#AAACB8] hover:text-[#FEC49A]">
+                Polymer Products
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="lg:ml-16">
+          <h1 class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[20px]">Quick Links</h1>
+          <a href="#" class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block mt-[12px]">
+            About Us
+          </a>
+          <a href="#" class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block">
+            Client
+          </a>
+          <a href="#" class="leading-[28px] text-[#AAACB8] hover:text-[#FEC49A] block">
+            Contact Us
+          </a>
+        </div>
+        <div class="lg:ml-10">
+          <h1 class="text-[#FFFFFF] text-[1.5rem] font-bold leading-[27px] pt-[20px]">Get in Touch</h1>
+          <p class="leading-[22px] text-[#AAACB8] mt-[14px]">Question or Feedback?
+            We’d love to here from you
+          </p>
+          <div class="bg-[#1B1944] flex flex-row flex-wrap items-center p-2 rounded-[5px] max-w-[243px] md:mt-[12px] mt-[6px]">
+            <input type="text" placeholder="email" class="bg-[transparent] text-[white] w-[90%]">
+            <img src={vector.src} alt="vector" class="h-3 w-2 ml-2">
+          </div>
+        </div>
+      </div>
+    </footer>
+    <footer class="bg-[#1B1944] text-center">
+      <p class="container-1 py-[18px] text-[#AAACB8] leading-[24px]">
+        © 2023 MIGNESH Global Limited. All Rights Reserved.
+      </p>
+    </footer> -->
+    <script>
+      const mobileMenuButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      const mobileAbout = document.getElementById("mobile-about");
+      const mobileAboutDropdown = document.getElementById(
+        "mobile-about-dropdown"
+      );
+      const mobileAboutArrow = document.getElementById("drop-arrow-1");
+      const mobileProducts = document.getElementById("mobile-products");
+      const mobileProductsDropdown = document.getElementById(
+        "mobile-products-dropdown"
+      );
+      const mobileProductsArrow = document.getElementById("drop-arrow-2");
+      // console.log(mobileAbout,mobileAboutDropdown,mobileProducts,mobileProductsDropdown)
+      mobileAbout.addEventListener("click", () => {
+        if (!mobileProductsDropdown.classList.contains("hidden")) {
+          mobileProductsDropdown.classList.toggle("hidden");
+          mobileProductsArrow.classList.toggle("rotate-[180deg]");
+        }
+        mobileAboutDropdown.classList.toggle("hidden");
+        mobileAboutArrow.classList.toggle("rotate-[180deg]");
+        // mobileAboutArrow.classList.toggle("rotate-[180deg]");
+      });
+      mobileProducts.addEventListener("click", () => {
+        if (!mobileAboutDropdown.classList.contains("hidden")) {
+          mobileAboutDropdown.classList.toggle("hidden");
+          mobileAboutArrow.classList.toggle("rotate-[180deg]");
+        }
+        mobileProductsDropdown.classList.toggle("hidden");
+        mobileProductsArrow.classList.toggle("rotate-[180deg]");
+        // mobileProductsArrow.classList.toggle("rotate-[90deg]");
+      });
+    </script>
+  </body>
+</html>

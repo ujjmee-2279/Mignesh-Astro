@@ -1,0 +1,169 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Infra_Card from "../components/Infra_Card.astro";
+import Button from "../components/Button.astro";
+import Banner from "../components/Banner.astro";
+---
+
+<Layout
+  title="Infrastructure"
+  meta_title="India's Leading B2B Infrastructure Material Company"
+  meta_desc="As a leading B2B infrastructure material company, We offer premium bitumen, oils, lubricants, and other construction materials at wholesale rates in India."
+>
+  <main>
+    <!-- infrastructure-Banner -->
+    <Banner
+      h2text="<span class='font-bold'>Mignesh Global</span> is backed by robust Infrastructure & efficient logistics!"
+      laptop="../../public/images/infra/infra_laptop.webp"
+      tablet="../../public/images/infra/infra_tablet.webp"
+      mobile="../../public/images/infra/infra_mobile.webp"
+    />
+
+    <!-- Product -->
+
+    <section class="body-font">
+      <div class="container-1 md:pt-20 pt-14 md:pb-10 pb-10">
+        <!-- header -->
+        <div class="flex lg:flex-row flex-col xl:mb-24 md:mb-20 mb-14">
+          <div class="xl:w-1/2 w-full mb-10 lg:mb-0">
+            <div class="head-txt lg:max-w-[400px] xl:max-w-[520px] mb-5">
+              <h6>Get your hands on the best-quality</h6>
+              <h2
+                class="uppercase tracking-[0.32px] md:leading-[40px] leading-[28px]"
+              >
+                Bitumen, Bitumen Emulsion, Base Oil, and Fuel Oil Products from
+                Mignesh Global.
+              </h2>
+            </div>
+
+            <p
+              class="lg:max-w-[400px] xl:max-w-[520px] w-full text-base leading-6 tracking-[0.16px] text-[#2C2C2C]"
+            >
+              Robust Infrastructure is at the core of Mignesh Global to deliver
+              best-in-class high-quality end products to Our clients. We have a
+              full-fledged infrastructure facility to ensure seamless storage,
+              supply and management of all the products, such as Bitumen,
+              Bitumen Emulsion, Base Oil and Fuel Oil.
+            </p>
+          </div>
+          <div
+            class="lg:flex-grow xl:w-1/2 w-full flex flex-col xl:items-start md:text-left items-center text-center lg:justify-center justify-normal"
+          >
+            <img
+              alt="infra-details"
+              src="../../public/images/infra/infra-2.svg"
+              class="object-cover object-center"
+            />
+          </div>
+        </div>
+
+        <div class="sm:text-start text-start w-full lg:mb-10 mb-5 head-txt">
+          <h2
+            class="2xl:w-3/4 w-full lowercase sm:leading-[40px] leading-[28px]"
+          >
+            <span class="capitalize">Our Infrastructure</span> is a testament to
+            our commitment to delivering top-notch products and services efficiently
+            and effectively.
+          </h2>
+        </div>
+
+        <!-- card -->
+        <div class="flex flex-wrap">
+          <!-- first card -->
+          <Infra_Card
+            title="Manufacturing Plant Facility"
+            data="We have set up our very own manufacturing plant in Savli GIDC (Baroda) to ensure quick, seamless and high-quality manufacturing of diverse products."
+            icon="../../public/images/infra/manufacturing.svg"
+          />
+          <!-- second card -->
+          <Infra_Card
+            title="State-of-the-art storage facility"
+            data="Mignesh Global has a huge storage facility with a capacity of 5000 metric tons, enabling us to stockpile a wide range of products in large quantities."
+            icon="public/images/infra/storing.svg"
+          />
+          <!-- third card -->
+          <Infra_Card
+            title="Availability of necessary fleet"
+            data="To ensure timely and seamless delivery of products, we maintain a dedicated fleet of sufficient trailors and other required equipment."
+            icon="../../public/images/infra/equipment.svg"
+          />
+          <!-- four  card -->
+          <Infra_Card
+            title="Strategic presence across the country"
+            data="Mignesh Global has established a strategic presence across various ports like Kandla, Mundra, Nahva Seva, Haldiya, Karwar providing us with excellent accessibility to multiple regions."
+            icon="../../public/images/infra/strategic.svg"
+          />
+          <!-- five card -->
+          <Infra_Card
+            title="Lubricant material manufacturing"
+            data="We even have a lubricant material manufacturing facility, which strengthens our capabilities to cater to the lubricant industry's diverse needs."
+            icon="../../public/images/infra/lubricant.svg"
+          />
+          <!-- six card -->
+          <Infra_Card
+            title="Our own Logistics Company"
+            data="To ensure faster and more efficient delivery of all the required products, such as Bitumen, Bitumen Emulsion, Base Oil & Fuel Oil, we have set up our own Logistics company(Mignesh Logistics)."
+            icon="../../public/images/infra/logistics.svg"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- infrastructure-Workflow -->
+
+    <section class="text-gray-600 body-font bg-[#F9F9FB]">
+      <div class="container-1">
+        <div
+          class="flex 2xl:px-[110px] xl:py-20 md:py-14 py-10 lg:flex-row flex-col lg:items-start"
+        >
+          <div class="lg:w-1/2 w-full mb-10 lg:mb-0 flex justify-center">
+            <img
+              alt="hero"
+              src="../../public/images/infra/infra-workflow1.svg"
+              class="object-cover object-center"
+            />
+          </div>
+
+          <div
+            class="lg:flex-grow lg:w-1/2 w-full lg:pl-32 flex flex-col lg:items-start text-left"
+          >
+            <div>
+              <p
+                class="mb-8 text-base leading-6 tracking-[0.16px] text-[#2C2C2C]"
+              >
+                Mignesh Global’s Infrastructure has been strategically designed
+                to enhance efficiency and reliability in all aspects of our
+                operations. From production to storage and distribution, we have
+                highly optimized our processes to deliver exceptional service
+                consistently.
+              </p>
+              <p
+                class="font-semibold sm:text-xl text-lg mb-8 text-[#2E2D6F] md:leading-8 leading-7 tracking-[0.2px]"
+              >
+                Delivering a Diverse Range of High-quality Products with our
+                Robust Infrastructure and experienced team.
+              </p>
+            </div>
+
+            <Button data="Contact Now!" link="/contact" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  @media screen and (max-width: 425px) {
+    .infra-banner {
+      background-image: url(../../public/images/infra/small.webp);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .banner-text p {
+      min-height: 800px;
+      padding-top: 200px;
+    }
+  }
+</style>

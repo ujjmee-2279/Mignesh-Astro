@@ -1,0 +1,29 @@
+---
+interface Props {
+  path: string;
+  head: string;
+  para: string;
+}
+
+const { para, path, head } = Astro.props;
+---
+
+<div
+  class="flex flex-col sm:flex-row justify-between gap-[10px] sm:gap-[31px] max-w-[627px] lg:mb-[60px] mb-[25px]"
+>
+  <div class="mt-2 lg:w-[72px] w-[62px]">
+    <img src={path} alt="image" />
+  </div>
+  <div
+    class="sm:w-[460px] md:w-[533px] lg:w-[344px] xl:w-[445px] 2xl:w-[524px]"
+  >
+    <h3
+      class="mb-[8px] text-[18px] text-[#48389C] font-[700] leading-[24px] tracking-[0.01em]"
+    >
+      {head}
+    </h3>
+    <p class="w-auto text-[16px] font-[400] leading-[24px] tracking-[0.01em]">
+      {para}
+    </p>
+  </div>
+</div>

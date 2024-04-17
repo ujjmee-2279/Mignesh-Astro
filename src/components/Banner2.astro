@@ -1,0 +1,71 @@
+---
+import Button from "./Button.astro";
+interface Props {
+  showButton?: boolean;
+  ptext?: string;
+  h2text?: string;
+  image?: string;
+}
+
+const { ptext, h2text, showButton, image } = Astro.props;
+---
+
+<section
+  class="text-gray-600 body-font bg-gradient-to-r from-[#252d4b] to-[#4b5eaa]"
+>
+  <div
+    class="infra-banner bg-no-repeat sm:bg-right bg-left-bottom item-center flex xl:h-[430px] lg:min-h-[370px] sm:h-[300px] h-[330px] w-full relative"
+  >
+    <img
+    alt="image"
+      src={image}
+      class="lg:w-fit sm:w-2/3 w-4/5 h-full object-fill absolute right-0 block"
+    />
+    <div class="container-1 self-center banner-text">
+      <h2
+        class="md:leading-10 text-2xl md:text-[32px] text-white lg:w-[40%] xl:w-[51%] w-[80%] ssm:w-2/4 font-normal"
+      >
+        <Fragment set:html={h2text} />
+      </h2>
+      <p
+        class="py-[10px] text-[16px] md:leading-6 text-white xl:w-1/3 2xl:w-[50%] lg:w-1/4 w-[80%] ssm:w-2/5"
+      >
+        <Fragment set:html={ptext} />
+      </p>
+      {showButton && <Button data="Browse Now" link="#our_product" />}
+      <!-- <Button data="Browse Now" link="#our_product" /> -->
+    </div>
+  </div>
+</section>
+
+<style>
+  @media screen and (max-width: 425px) {
+    .infra-banner {
+      background-image: url(/public/product-small.png);
+
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 653px;
+    }
+    .infra-banner img {
+      display: none;
+    }
+    .banner-text {
+      width: 190%;
+      min-height: 800px;
+      padding-top: 100px;
+    }
+  }
+  /* @media (min-width: 426px) and (max-width: 767px) {
+    .infra-banner {
+      background-image: url(/CsrImages/medium_group_50.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 423px;
+      right: -160px;
+    }
+    .infra-banner img {
+      display: none !important;
+    }
+  } */
+</style>
