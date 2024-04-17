@@ -1,0 +1,347 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProductCta from "../../components/Product_cta.astro";
+
+// SET DYNAMIC PATHS
+export async function getStaticPaths() {
+  // CALL ENV VARIABLES
+  const apiKey = import.meta.env.PUBLIC_ApiKey as string;
+  const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+  const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
+
+  // API TO GET THE NAME OF PRODUCT
+  const product_path_api = await fetch(
+    `${apiURL}api/resource/Website%20Item?filters=[[%22custom_product_category%22,%22=%22,%22Lubricant%20Raw%20Material%22],[%22published%22,%22=%22,%221%22]]&fields=[%22name%22,%22custom_website_path%22]&limit_page_length=none`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `token ${apiKey}:${secretKey}`,
+      },
+    }
+  );
+  const product_path_json = await product_path_api.json();
+  const product_path_data = product_path_json.data;
+
+  // DEFINE DYNAMIC PATHS
+  const paths = product_path_data.map((product_data) => ({
+    params: { product: product_data.custom_website_path },
+    props: {
+      product_id: product_data.name,
+      apiKey: apiKey,
+      secretKey: secretKey,
+      apiURL: apiURL,
+    },
+  }));
+  return paths;
+}
+
+// CURRENCY FORMATTER
+const formatter = new Intl.NumberFormat("en-US", {
+  style: "decimal",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+});
+
+// ASTRO DEFAULTS
+const { product } = Astro.params;
+const { product_id, apiKey, secretKey, apiURL } = Astro.props;
+
+// API TO GET ALL THE PRODUCT DETAILS
+const product_detail_api = await fetch(
+  `${apiURL}api/resource/Website%20Item/${product_id}`,
+  {
+    method: "GET",
+    headers: {
+      Authorization: `token ${apiKey}:${secretKey}`,
+    },
+  }
+);
+const product_detail_json = await product_detail_api.json();
+const product_detail = product_detail_json.data;
+
+// DEFINE REQUIRED VARIABLES
+const product_name = product_detail.web_item_name;
+const meta_title = product_detail.custom_meta_title
+  ? product_detail.custom_meta_title
+  : "Delivering Quality Raw Materials at Competitive Prices.";
+const meta_description = product_detail.custom_meta_description
+  ? product_detail.custom_meta_description
+  : "Explore Mignesh Global's comprehensive grades of high-quality raw materials, including Bitumin products, lubricants materials, petroleum products at affordable rates.";
+const product_application_image =
+  product_detail.custom__product_application_image;
+const price = product_detail.custom_price;
+const product_image = product_detail.custom_product_image;
+const applications = product_detail.custom_application;
+const product_specifications =
+  product_detail.custom_website_product_specification;
+let specification_names = Array.from(
+  new Set(product_specifications.map((data) => data.specification_type))
+);
+---
+
+<Layout
+  title={product_name}
+  meta_title={meta_title}
+  meta_desc={meta_description}
+>
+  <!-- PRODUCT DETAIL -->
+  <section class="product-detail">
+    <!-- HEADING SECTION -->
+    <section id="heading">
+      <div
+        class="bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] text-[#FFFFFF] lg:h-[110px] flex flex-col justify-center items-center md:p-[30px] lg:p-0 pt-[10px] pb-[10px]"
+      >
+        <span
+          id="productCat"
+          class="block text-sm sm:text-base font-bold container-1 uppercase"
+          >LUBRICANT RAW MATERIAL PRODUCTS</span
+        >
+        <h2
+          class="container-1 product-name leading-6 md:text-[32px] text-[24px] font-[700]"
+        >
+          {product_name}
+        </h2>
+      </div>
+    </section>
+    <!-- END HEADING SECTION -->
+
+    <!-- MAIN SECTION  -->
+    <main>
+      <!-- APPLICATION SECTION -->
+      <section class="container-1 py-8 sm:py-14 lg:py-20" id="styles">
+        <div class="grid md:grid-cols-2 grid-cols-1">
+          <div class="order-2 md:order-1">
+            <div class="head-txt">
+              <h3
+                class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+              >
+                Application of
+              </h3>
+              <h3
+                class="text-[#48389C] product-name text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+              >
+                {product_name}
+              </h3>
+            </div>
+            <div id="heading">
+              <div class="mt-4 sm:mt-[28px] ml-1 sm:ml-[20px]">
+                <ul class="" id="application">
+                  {
+                    applications.map((data) => (
+                      <li class="flex mt-3 sm:mt-6 gap-2.5">
+                        <>
+                          <div class="w-5">
+                            <div>
+                              <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <>
+                                  <path
+                                    d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10Z"
+                                    fill="#E98135"
+                                  />
+                                  <path
+                                    d="M4.22006 18.1614C3.30008 17.5087 2.49525 16.7043 1.842 15.7847L9.02935 8.59799L6.64148 6.21032C6.54431 6.11072 6.47844 5.98487 6.45196 5.84827C6.42548 5.71168 6.43956 5.57032 6.49247 5.44163C6.54538 5.31295 6.6348 5.20256 6.7497 5.12409C6.86461 5.04561 6.99997 5.00247 7.1391 5H14.2872C14.4757 5.00175 14.656 5.07742 14.7893 5.2107C14.9226 5.34399 14.9982 5.52425 15 5.71274V12.8603C14.9975 12.9994 14.9544 13.1347 14.8759 13.2496C14.7974 13.3645 14.6871 13.4539 14.5584 13.5068C14.4297 13.5598 14.2883 13.5738 14.1517 13.5474C14.0151 13.5209 13.8892 13.455 13.7896 13.3578L11.4068 10.9752L4.22006 18.1614Z"
+                                    fill="white"
+                                  />
+                                </>
+                              </svg>
+                            </div>
+                          </div>
+                          <div class="max-w-[85%]">{data.application}</div>
+                        </>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 md:order-2">
+            <img
+              id="application_image"
+              alt="drums"
+              src=`http://192.168.2.126:8001/${product_application_image}`
+            />
+          </div>
+        </div>
+      </section>
+      <!-- END APPLICATION SECTION -->
+
+      <!-- SPECIFICATION SECTION -->
+      <section class="container-1">
+        <div>
+          <div id="heading_div" class="mb-6 sm:mb-[49px]">
+            <div class="head-txt">
+              <h3
+                class="text-[#EA8135] font-bold text-lg sm:text-xl md:leading-7"
+              >
+                Specification
+              </h3>
+              <h3
+                class="text-[#48389C] product-name text-2xl sm:text-[32px] md:leading-7 font-bold uppercase"
+              >
+                {product_name}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex lg:flex-row flex-col justify-between md:gap-[25px] gap-[15px]"
+        >
+          <div class="order-2 lg:order-1">
+            <div
+              class="relative overflow-x-auto shadow-md rounded-lg xl:w-[800px] lg:w-[550px] border-[1px] border-[#AAACB8]"
+            >
+              <table class="text-left w-full">
+                {
+                  specification_names.includes("Specification") && (
+                    <thead class="bg-[#48389C1A] text-[#48389C]">
+                      <tr>
+                        <th
+                          scope="col"
+                          class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                        >
+                          Specification
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                        >
+                          Unit
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                        >
+                          Value
+                        </th>
+                        <th
+                          scope="col"
+                          class="px-4 py-[15px] font-[700] text-[18px] leading-[24px] tracking-[1%]"
+                        >
+                          Test Method
+                        </th>
+                      </tr>
+                    </thead>
+                  )
+                }
+                <tbody id="table-body">
+                  {
+                    product_specifications
+                      .filter(
+                        (data) => data.specification_type === "Specification"
+                      )
+                      .map((data) => (
+                        <tr class="border-b text-left">
+                          <th class="px-4 py-4 whitespace-nowrap text-black">
+                            {data.specification}
+                          </th>
+                          <td class="px-4 py-[15px]">{data.unit}</td>
+                          <td class="px-4 py-[15px]">{data.value}</td>
+                          <td class="px-4 py-[15px]">{data.test_method}</td>
+                        </tr>
+                      ))
+                  }
+                  {
+                    specification_names.includes(
+                      "Thin-Film Oven Test (TFOT)"
+                    ) && (
+                      <tr class="border-b text-left">
+                        <th
+                          colspan="4"
+                          class="border-b text-left text-[#48389C] px-4 py-[15px] bg-[#48389C08]"
+                        >
+                          Thin-Film Oven Test (TFOT)
+                        </th>
+                      </tr>
+                    )
+                  }
+                  {
+                    product_specifications
+                      .filter(
+                        (data) =>
+                          data.specification_type ===
+                          "Thin-Film Oven Test (TFOT)"
+                      )
+                      .map((data) => (
+                        <tr class="border-b text-left">
+                          <th class="px-4 py-4 whitespace-nowrap text-black">
+                            {data.specification}
+                          </th>
+                          <td class="px-4 py-[15px]">{data.unit}</td>
+                          <td class="px-4 py-[15px]">{data.value}</td>
+                          <td class="px-4 py-[15px]">{data.test_method}</td>
+                        </tr>
+                      ))
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div
+            class="order-1 lg:order-2 border-[1px] rounded-lg mx-auto lg:mx-0 2xl:w-[410px] 2xl:h-[510px] xl:w-[300px] xl:h-[400px] lg:w-[270px] lg:h-[370px] border-[#C4C3CA]"
+          >
+            <div
+              id="details"
+              class="bg-gradient-to-r from-[#242D4A] to-[#4B5EAA] rounded-t-lg h-[60px] pt-[6px] md:pt-0"
+            >
+              <h2
+                class="product_name text-[white] font-[700] md:leading-[32px] leading-[20px] text-[24px] pl-[14px] 2xl:pt-[8px] pt-[4px]"
+              >
+                {product_name}
+              </h2>
+              <div id="price" class="flex pb-[4px] 2xl:pb-[6px]">
+                <h5
+                  class="font-[400] leading-[24px] md:leading-[18px] 2xl:leading-[14px] text-[14px] pl-[14px] text-[#A2A6AC]"
+                >
+                  Base Price:
+                </h5>
+                <p
+                  id="base-price"
+                  class="text-[16px] font-[600] leading-[26px] md:leading-[20px] 2xl:leading-[16px] text-[white] pl-3"
+                >
+                  ₹ {formatter.format(price)}
+                </p>
+              </div>
+            </div>
+            <div>
+              <img
+                id="product-image"
+                src=`http://192.168.2.126:8001/${product_image}`
+                alt="drum"
+                class="mx-auto 2xl:h-[390px] xl:h-[280px] lg:h-[250px] object-cover"
+              />
+            </div>
+            <div class="flex justify-center items-center h-[60px]">
+              <div>
+                <a
+                  href=`/quote/${product}`
+                  type="button"
+                  id="get-quote"
+                  class="bg-[#E98135] text-[white] text-[16px] leading-[24px] font-[400] rounded-[5px] 2xl:px-7 2xl:py-3 xl:px-5 xl:py-2 lg:px-4 px-3 py-2 object-cover"
+                  >GET A QUOTE</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- END SPECIFICATION SECTION -->
+
+      <!-- CTA SECTION -->
+      <section class="mt-[101px]">
+        <ProductCta
+          button_text="CONTACT NOW!"
+          head="Get your free sample now!"
+        />
+      </section>
+      <!-- END CTA SECTION -->
+    </main>
+    <!-- END MAIN SECTION  -->
+  </section>
+</Layout>

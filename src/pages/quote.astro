@@ -570,29 +570,10 @@ import Layout from "../layouts/Layout.astro";
 
     const apiKey = import.meta.env.PUBLIC_ApiKey as string;
     const secretKey = import.meta.env.PUBLIC_SecretKey as string;
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const website_path = urlParams.get("product");
-
-    // const website_path = "vg-10-bulk";
-
-    // const get_id_API = await fetch(
-    //   `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: `token ${apiKey}:${secretKey}`,
-    //     },
-    //   }
-    // );
-
-    // const get_id_data = await get_id_API.json();
-    // const get_id = get_id_data.data;
-    // const id = get_id[0].name;
-    // console.log(get_id);
+    const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
 
     const allProductsJson = await fetch(
-      `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1]]&fields=[%22web_item_name%22,%22name%22]&limit_page_length=100`,
+      `${apiURL}api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1]]&fields=[%22web_item_name%22,%22name%22]&limit_page_length=100`,
 
       {
         method: "GET",
@@ -603,9 +584,9 @@ import Layout from "../layouts/Layout.astro";
     );
 
     const allProductsJsonData = await allProductsJson.json();
-    console.log(allProductsJsonData);
+    // console.log(allProductsJsonData);
     const allProductData = allProductsJsonData.data;
-    console.log(allProductData);
+    // console.log(allProductData);
 
     const products_select = document.getElementById(
       "products_select"
@@ -617,24 +598,6 @@ import Layout from "../layouts/Layout.astro";
       option.innerText = data.web_item_name;
       option.value = data.web_item_name;
       products_select.appendChild(option);
-    });
-
-    allProductData.forEach((data) => {
-      if (id == data.name) {
-        // console.log(data.web_item_name);
-
-        for (const option of products_select.options) {
-          // console.log(products_select.options);
-          // console.log(option.value);
-          // Check if the option's value matches the value to select
-          if (option.value == data.web_item_name) {
-            // Set the selected property to true for the matching option
-            // console.log(option.value);
-            option.selected = true;
-            // Exit the loop since the option is found
-          }
-        }
-      }
     });
 
     document.querySelector("form").addEventListener("submit", async (event) => {
@@ -659,10 +622,7 @@ import Layout from "../layouts/Layout.astro";
 
     async function sendDataToFrappDoctype(formData) {
       try {
-        const endpoint = `http://192.168.2.126:8001/api/resource/Website%20Enquiry`;
-
-        const authToken = `token ${apiKey}:${secretKey}`;
-
+        const endpoint = `${apiURL}api/resource/Website%20Enquiry`;
         const response = await fetch(endpoint, {
           method: "POST",
           headers: {
@@ -673,7 +633,12 @@ import Layout from "../layouts/Layout.astro";
         });
         const successPopup = document.getElementById("success-popup");
 
-        // Add this code after showing the pop-up message in the `sendDataToFrappDoctype` function
+        document.getElementById("closePopup").addEventListener("click", () => {
+          const successPopup = document.getElementById("success-popup");
+          successPopup.classList.add("hidden");
+          (document.getElementById("enquiry-form") as HTMLFormElement).reset(); // Reset the form
+        });
+
         setTimeout(() => {
           successPopup.classList.add("hidden"); // Hide the pop-up message
           (document.getElementById("enquiry-form") as HTMLFormElement).reset(); // Reset the form

@@ -155,88 +155,20 @@ import ProductDetail from "../components/ProductDetail.astro";
         head="Fuel Your Success with Mignesh Global! Explore our Range of High-Quality Petroleum Products Today."
       />
     </section>
-
-    <section id="product">
-      <ProductDetail />
-    </section>
   </main>
 
-  <!-- DYNAMIC SCRIPT FOR PRODUCT DETAIL -->
   <script>
     const apiKey = import.meta.env.PUBLIC_ApiKey as string;
     const secretKey = import.meta.env.PUBLIC_SecretKey as string;
-
-    const MainElememnt = document.querySelector("#main");
-    const CategoryElememnt = document.querySelector("#category");
-    const ProductElememnt = document.querySelector("#product");
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const website_path = urlParams.get("product");
-    console.log(website_path);
-
-    // const website_path = "vg-10-bulk";
-
-    if (website_path) {
-      const get_id_API = await fetch(
-        `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `token ${apiKey}:${secretKey}`,
-          },
-        }
-      );
-
-      const get_id_data = await get_id_API.json();
-      const get_id = get_id_data.data;
-      console.log(get_id);
-
-      if (get_id && get_id[0] && get_id[0].name) {
-        const id = get_id[0].name;
-
-        console.log("id", id);
-
-        const respose = await fetch(
-          `http://192.168.2.126:8001/api/resource/Website Item/${id}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `token ${apiKey}:${secretKey}`,
-            },
-          }
-        );
-
-        const responseData = await respose.json();
-        const tableData = responseData.data;
-
-        console.log(tableData);
-
-        if (tableData && tableData.published === 1) {
-          console.log("Get The Item");
-          CategoryElememnt.remove();
-        } else {
-          console.log("No Product");
-          ProductElememnt.remove();
-        }
-      } else {
-        ProductElememnt.remove();
-      }
-    } else {
-      ProductElememnt.remove();
-    }
-  </script>
-
-  <script>
-    const apiKey = import.meta.env.PUBLIC_ApiKey as string;
-    const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+    const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
 
     const formatter = new Intl.NumberFormat("en-US", {
       style: "decimal",
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     });
-    const respose = await fetch(
-      `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1],[%22custom_product_category%22,%20%22=%22,%20%22Petroleum%20Products%22]]&fields=[%22web_item_name%22,%20%22custom_price%22,%22name%22,%22custom_sub_category%22,%22custom_product_category%22,%22custom_website_path%22]&limit_page_length=100`,
+    const appProductData = await fetch(
+      `${apiURL}api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1],[%22custom_product_category%22,%20%22=%22,%20%22Petroleum%20Products%22]]&fields=[%22web_item_name%22,%20%22custom_price%22,%22name%22,%22custom_sub_category%22,%22custom_product_category%22,%22custom_website_path%22]&limit_page_length=100`,
       {
         method: "GET",
         headers: {
@@ -245,14 +177,14 @@ import ProductDetail from "../components/ProductDetail.astro";
       }
     );
 
-    const responseData = await respose.json();
+    const responseData = await appProductData.json();
     const apiData = responseData.data;
     // console.log(responseData);
     // console.log(apiData);
     // console.log(custom_sub_category)
 
     const allSubCategoriesApi = await fetch(
-      `http://192.168.2.126:8001/api/resource/Website%20Item%20Sub%20Category?filters=[[%22product_category%22,%22=%22,%22Petroleum%20Products%22]]&fields=[%22name%22,%22product_category%22,%22index%22]`,
+      `${apiURL}api/resource/Website%20Item%20Sub%20Category?filters=[[%22product_category%22,%22=%22,%22Petroleum%20Products%22]]&fields=[%22name%22,%22product_category%22,%22index%22]`,
       {
         method: "GET",
         headers: {

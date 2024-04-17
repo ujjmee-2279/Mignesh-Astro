@@ -1,25 +1,48 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 export async function getStaticPaths() {
+  // CALL ENV VARIABLES
+  const apiKey = import.meta.env.PUBLIC_ApiKey as string;
+  const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+  const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
+
   const response = await fetch(
-    "http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1]]&fields=[%22web_item_name%22,%22name%22,%22custom_website_path%22]&limit_page_length=none"
+    `${apiURL}api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1]]&fields=[%22web_item_name%22,%22name%22,%22custom_website_path%22]&limit_page_length=none`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `token ${apiKey}:${secretKey}`,
+      },
+    }
   );
   const data = await response.json();
 
   const paths = data.data.map((productName) => ({
-    params: { productquote: productName.custom_website_path },
+    params: { quote: productName.custom_website_path },
+    props: {
+      apiKey: apiKey,
+      secretKey: secretKey,
+      apiURL: apiURL,
+    },
   }));
 
   return paths;
 }
 
-const { productquote } = Astro.params;
+const { quote } = Astro.params;
+const { apiKey, secretKey, apiURL } = Astro.props;
 
-const response = await fetch(
-  `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[]&fields=[%22item_name%22,%22custom_website_path%22]&limit_page_length=none`
+const product_name_api = await fetch(
+  `${apiURL}api/resource/Website%20Item?filters=[]&fields=[%22item_name%22,%22custom_website_path%22]&limit_page_length=none`,
+  {
+    method: "GET",
+    headers: {
+      Authorization: `token ${apiKey}:${secretKey}`,
+    },
+  }
 );
-const data = await response.json();
-const select_products = data.data;
+const product_name_json = await product_name_api.json();
+const product_name_data = product_name_json.data;
 ---
 
 <Layout title="Quote">
@@ -430,8 +453,8 @@ const select_products = data.data;
                   id="grid-product"
                 >
                   {
-                    select_products.map((data) => (
-                      <option selected={data.custom_website_path === productquote}>
+                    product_name_data.map((data) => (
+                      <option selected={data.custom_website_path === quote}>
                         {data.item_name}
                       </option>
                     ))
@@ -596,72 +619,7 @@ const select_products = data.data;
 
     const apiKey = import.meta.env.PUBLIC_ApiKey as string;
     const secretKey = import.meta.env.PUBLIC_SecretKey as string;
-
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const website_path = urlParams.get("product");
-
-    // // const website_path = "vg-10-bulk";
-
-    // const get_id_API = await fetch(
-    //   `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22custom_website_path%22,%22=%22,%22${website_path}%22]]&fields=[%22name%22]`,
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: `token ${apiKey}:${secretKey}`,
-    //     },
-    //   }
-    // );
-
-    // const get_id_data = await get_id_API.json();
-    // const get_id = get_id_data.data;
-    // const id = get_id[0].name;
-    // console.log(get_id);
-
-    // const allProductsJson = await fetch(
-    //   `http://192.168.2.126:8001/api/resource/Website%20Item?filters=[[%22published%22,%22=%22,1]]&fields=[%22web_item_name%22,%22name%22]&limit_page_length=100`,
-
-    //   {
-    //     method: "GET",
-    //     headers: {
-    //       Authorization: `token ${apiKey}:${secretKey}`,
-    //     },
-    //   }
-    // );
-
-    // const allProductsJsonData = await allProductsJson.json();
-    // console.log(allProductsJsonData);
-    // const allProductData = allProductsJsonData.data;
-    // console.log(allProductData);
-
-    // const products_select = document.getElementById(
-    //   "products_select"
-    // ) as HTMLSelectElement;
-
-    // allProductData.forEach((data) => {
-    //   // console.log(data.web_item_name)
-    //   const option = document.createElement("option");
-    //   option.innerText = data.web_item_name;
-    //   option.value = data.web_item_name;
-    //   products_select.appendChild(option);
-    // });
-
-    // allProductData.forEach((data) => {
-    //   if (id == data.name) {
-    //     // console.log(data.web_item_name);
-
-    //     for (const option of products_select.options) {
-    //       // console.log(products_select.options);
-    //       // console.log(option.value);
-    //       // Check if the option's value matches the value to select
-    //       if (option.value == data.web_item_name) {
-    //         // Set the selected property to true for the matching option
-    //         // console.log(option.value);
-    //         option.selected = true;
-    //         // Exit the loop since the option is found
-    //       }
-    //     }
-    //   }
-    // });
+    const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
 
     document.querySelector("form").addEventListener("submit", async (event) => {
       event.preventDefault(); // Prevent the form from submitting
@@ -685,9 +643,7 @@ const select_products = data.data;
 
     async function sendDataToFrappDoctype(formData) {
       try {
-        const endpoint = `http://192.168.2.126:8001/api/resource/Website%20Enquiry`;
-
-        const authToken = `token ${apiKey}:${secretKey}`;
+        const endpoint = `${apiURL}api/resource/Website%20Enquiry`;
 
         const response = await fetch(endpoint, {
           method: "POST",

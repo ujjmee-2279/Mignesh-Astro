@@ -464,7 +464,6 @@ import Layout from "../layouts/Layout.astro";
     "grid-number"
   ) as HTMLInputElement;
 
-
   let firstNameMsg = document.getElementById("firstname_valid");
   let lastNameMsg = document.getElementById("lastname_valid");
   let emailMsg = document.getElementById("email_valid");
@@ -575,6 +574,7 @@ import Layout from "../layouts/Layout.astro";
 
   const apiKey = import.meta.env.PUBLIC_ApiKey as string;
   const secretKey = import.meta.env.PUBLIC_SecretKey as string;
+  const apiURL = import.meta.env.PUBLIC_ApiUrl as string;
 
   document.querySelector("form").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -595,9 +595,7 @@ import Layout from "../layouts/Layout.astro";
 
   async function sendDataToFrappDoctype(formData) {
     try {
-      const endpoint =
-        `http://192.168.2.126:8001/api/resource/Website%20Enquiry`;
-      const authToken = `token ${apiKey}:${secretKey}`; // Replace with your authentication token if required
+      const endpoint = `${apiURL}api/resource/Website%20Enquiry`;
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -616,6 +614,10 @@ import Layout from "../layouts/Layout.astro";
         (document.getElementById("contact-form") as HTMLFormElement).reset(); // Reset the form
       });
 
+      setTimeout(() => {
+        successPopup.classList.add("hidden"); // Hide the pop-up message
+        (document.getElementById("contact-form") as HTMLFormElement).reset(); // Reset the form
+      }, 3000); // 3000 milliseconds (3 seconds)
 
       if (response.status === 200) {
         // Show the pop-up message
